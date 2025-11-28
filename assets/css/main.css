@@ -737,6 +737,15 @@ em {
   background-size: cover;
 }
 
+.team-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-self: flex-end;
+  flex-shrink: 0;
+}
+
 .team-info {
   flex: 1;
 }

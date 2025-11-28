@@ -25,7 +25,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 <div class="team-grid">
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/cees_snoek.jpg" alt="Prof. dr. Cees Snoek" class="team-photo">
 <div class="team-info">
 <h3>Prof. dr. Cees Snoek</h3>
 <p class="role">Lead Principal Investigator</p>
@@ -36,7 +36,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/pascal_mettes.jpg" alt="Dr. Pascal Mettes" class="team-photo">
 <div class="team-info">
 <h3>Dr. Pascal Mettes</h3>
 <p class="role">Lab Manager</p>
@@ -53,7 +53,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 <div class="team-grid">
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/erwin.jpg" alt="Dr. Erwin Berkhout" class="team-photo">
 <div class="team-info">
 <h3>Dr. Erwin Berkhout</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -64,7 +64,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/paula_helm.jpg" alt="Prof. dr. Tobias Blanke" class="team-photo">
 <div class="team-info">
 <h3>Prof. dr. Tobias Blanke</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -75,7 +75,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/iris.png" alt="Dr. Iris Groen" class="team-photo">
 <div class="team-info">
 <h3>Dr. Iris Groen</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -86,7 +86,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/hljanssen.png" alt="Dr. mr. Heleen Janssen" class="team-photo">
 <div class="team-info">
 <h3>Dr. mr. Heleen Janssen</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -97,7 +97,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/marie.jpg" alt="Prof. dr. Marie Lindegaard" class="team-photo">
 <div class="team-info">
 <h3>Prof. dr. Marie Lindegaard</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -108,7 +108,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/stevan.jpeg" alt="Dr. Stevan Rudinac" class="team-photo">
 <div class="team-info">
 <h3>Dr. Stevan Rudinac</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -119,7 +119,7 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/marlis.jpg" alt="Prof. dr. Marlies Schijven" class="team-photo">
 <div class="team-info">
 <h3>Prof. dr. Marlies Schijven</h3>
 <p class="role">Co-Principal Investigator</p>
@@ -138,25 +138,25 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 <div class="team-grid">
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/anne_zonneveld.jpeg" alt="Anne Zonneveld" class="team-photo">
 <div class="team-info">
-<h3>PhD 1: Cognitive Alignment</h3>
+<h3>Anne Zonneveld</h3>
 <p class="supervisors">Dr. Iris Groen (FNWI) · Dr. Pascal Mettes (FNWI)</p>
 </div>
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/dasha_simons.jpg" alt="Dasha Simons" class="team-photo">
 <div class="team-info">
-<h3>PhD 2: Ethical Alignment</h3>
+<h3>Dasha Simons</h3>
 <p class="supervisors">Prof. dr. Tobias Blanke (FGw) · Prof. dr. Cees Snoek (FNWI)</p>
 </div>
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/marten_steketee.jpg" alt="Marten Steketee" class="team-photo">
 <div class="team-info">
-<h3>PhD 3: Legal Alignment</h3>
+<h3>Marten Steketee</h3>
 <p class="supervisors">Dr. mr. Heleen Janssen (FdR) · Prof. dr. Cees Snoek (FNWI)</p>
 </div>
 </div>
@@ -167,33 +167,33 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 <div class="team-grid">
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/ruthu-hulikal-rooparaghunath.jpg" alt="Ruthu Rooparaghunath" class="team-photo">
 <div class="team-info">
-<h3>PhD 4: Criminal Behavior</h3>
+<h3>Ruthu Rooparaghunath</h3>
 <p class="supervisors">Prof. dr. Marie Lindegaard (FMG) · Prof. dr. Cees Snoek (FNWI)</p>
 </div>
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/ana-manzano.jpg" alt="Ana Manzano Rodríguez" class="team-photo">
 <div class="team-info">
-<h3>PhD 5: Skill Assessment</h3>
+<h3>Ana Manzano Rodríguez</h3>
 <p class="supervisors">Prof. dr. Marlies Schijven (AUMC) · Prof. dr. Cees Snoek (FNWI)</p>
 </div>
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/swasti-mishra.jpg" alt="Swasti Shreya Mishra" class="team-photo">
 <div class="team-info">
-<h3>PhD 6: Diagnostic Training</h3>
+<h3>Swasti Shreya Mishra</h3>
 <p class="supervisors">Dr. Erwin Berkhout (ACTA) · Dr. Pascal Mettes (FNWI)</p>
 </div>
 </div>
 
 <div class="team-card">
-<div class="team-photo-placeholder"></div>
+<img src="/images/gowreesh-mago.jpg" alt="Gowreesh Mago" class="team-photo">
 <div class="team-info">
-<h3>PhD 7: Responsible Marketing</h3>
+<h3>Gowreesh Mago</h3>
 <p class="supervisors">Dr. Stevan Rudinac (FEE) · Dr. Pascal Mettes (FNWI)</p>
 </div>
 </div>
