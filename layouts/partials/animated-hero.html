@@ -1,0 +1,484 @@
+<style>
+  :root {
+    --red: #C41E3A;
+    --red-glass: rgba(196, 30, 58, 0.85);
+    --black: #0A0A0A;
+    --black-strip: #1A1A1A;
+    --white: #FAFAFA;
+
+    --strip-width: 95px;
+    --strip-height: 75px;
+    --gap: 15px;
+    --label-width: 160px;
+  }
+
+  .animated-hero {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+    width: 100%;
+    /* overflow-x: hidden; Removed to prevent clipping */
+  }
+
+  .hero-content {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 50%;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #000;
+    word-wrap: break-word;
+  }
+
+  .hero-content .subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .hero-content .hebrew {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .hero-content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #222;
+  }
+
+  .hero-content p.lead {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--red);
+  }
+
+  .visualization-container {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  /* Frame corners */
+  .frame {
+    position: relative;
+    padding: 20px;
+  }
+
+  .corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+  }
+
+  .corner.tl { top: 0; left: 0; border-top: 2px solid var(--red); border-left: 2px solid var(--red); }
+  .corner.tr { top: 0; right: 0; border-top: 2px solid var(--red); border-right: 2px solid var(--red); }
+  .corner.bl { bottom: 0; left: 0; border-bottom: 2px solid var(--red); border-left: 2px solid var(--red); }
+  .corner.br { bottom: 0; right: 0; border-bottom: 2px solid var(--red); border-right: 2px solid var(--red); }
+
+  /* Column labels above the loom */
+  .col-labels {
+    display: flex;
+    margin-left: var(--label-width);
+    margin-bottom: 15px;
+  }
+
+  .col-label {
+    width: var(--strip-width);
+    margin-right: var(--gap);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  .col-label:last-child {
+    margin-right: 0;
+  }
+
+  .col-label .title {
+    font-size: 0.65rem;
+    opacity: 0.8;
+    line-height: 1.3;
+  }
+
+  /* The loom */
+  .loom {
+    position: relative;
+    /* Height = 4 rows * height + 3 gaps */
+    height: calc(4 * var(--strip-height) + 3 * var(--gap));
+    /* Width = label + 3 cols * width + 2 gaps + extra padding */
+    width: calc(var(--label-width) + 3 * var(--strip-width) + 2 * var(--gap) + 10px);
+  }
+
+  /* Vertical strips (BLACK WARP) */
+  .v-strip {
+    position: absolute;
+    top: 0;
+    width: var(--strip-width);
+    height: 100%;
+    background: var(--black-strip);
+    z-index: 10; /* Base z-index for vertical strips */
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  .v-strip:nth-child(1) { left: var(--label-width); }
+  .v-strip:nth-child(2) { left: calc(var(--label-width) + var(--strip-width) + var(--gap)); }
+  .v-strip:nth-child(3) { left: calc(var(--label-width) + 2 * (var(--strip-width) + var(--gap))); }
+
+  /* Horizontal Rows Container */
+  .h-row {
+    position: absolute;
+    left: 0;
+    height: var(--strip-height);
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    /* No z-index here, let children handle it */
+  }
+
+  .h-row:nth-of-type(4) { top: 0; }
+  .h-row:nth-of-type(5) { top: calc(var(--strip-height) + var(--gap)); }
+  .h-row:nth-of-type(6) { top: calc(2 * (var(--strip-height) + var(--gap))); }
+  .h-row:nth-of-type(7) { top: calc(3 * (var(--strip-height) + var(--gap))); }
+
+  /* Segments */
+  .h-seg {
+    position: relative;
+    background: var(--red-glass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    /* Box shadow for depth */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Text-only segments fade instead of expanding */
+  .h-seg.label-seg {
+    transform: none;
+    opacity: 0;
+  }
+
+  /* Gradient overlay for all segments */
+  .h-seg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Segment Types */
+  .h-seg.label-seg {
+    width: var(--label-width);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    z-index: 20; /* Always on top */
+    /* Ensure shadow is consistent */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  }
+
+  .h-seg.gap-seg {
+    width: var(--gap);
+    /* Inherit background and effects from .h-seg base class */
+    z-index: 15; /* Between layers, effectively on top of background */
+  }
+  /* Remove the rule that hid the gradient on gaps */
+  /* .h-seg.gap-seg::before { display: none; } */
+
+  .h-seg.warp-seg {
+    width: var(--strip-width);
+  }
+
+  /* Weaving Logic */
+  .h-seg.over {
+    z-index: 20; /* Above v-strip (10) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow for "over" */
+  }
+
+  .h-seg.under {
+    z-index: 5; /* Below v-strip (10) */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Inner shadow to look "under" */
+    filter: brightness(0.8); /* Slightly darker */
+  }
+
+  .h-seg .title {
+    font-size: 0.65rem;
+    color: var(--white);
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  /* Lab Label */
+  .lab-label-container {
+    margin-top: 45px;
+    text-align: right;
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  .lab-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.2em;
+  }
+
+  .lab-label span {
+    color: var(--red);
+  }
+
+  /* Animations */
+  .v-strip.in { animation: growY 0.6s ease forwards; }
+  .col-label.in { animation: fadeDown 0.4s ease forwards; }
+  .lab-label-container.in { animation: fadeUp 0.5s ease forwards; }
+  
+  /* Segment animation handled via JS delays, but we need the keyframe */
+  .h-seg.in { animation: growX 0.4s ease forwards; }
+  .h-seg.label-seg.in { animation: fadeIn 0.4s ease forwards; }
+
+  @keyframes growY {
+    to { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes growX {
+    to { opacity: 1; transform: scaleX(1); }
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeDown {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 1200px) {
+    .animated-hero {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .hero-content {
+      max-width: 100%;
+    }
+
+    .visualization-container {
+      flex: 0 0 auto;
+    }
+
+    :root {
+      --strip-width: 80px;
+      --strip-height: 70px;
+      --gap: 12px;
+      --label-width: 150px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+
+    :root {
+      --strip-width: 70px;
+      --strip-height: 60px;
+      --gap: 10px;
+      --label-width: 130px;
+    }
+
+    .h-seg .title { display: none; }
+    .col-label .title { font-size: 0.55rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+
+    :root {
+      --strip-width: 55px;
+      --strip-height: 50px;
+      --gap: 8px;
+      --label-width: 100px;
+    }
+
+    .h-seg .num, .col-label .num { font-size: 0.9rem; }
+    .col-label .title { display: none; }
+  }
+</style>
+
+<div class="animated-hero">
+  <div class="hero-content">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
+    {{ with .Params.hebrew }}<p class="hebrew">{{ . }}</p>{{ end }}
+    {{ .Content }}
+  </div>
+
+  <div class="visualization-container">
+    <div class="frame">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+
+      <div class="col-labels">
+        <div class="col-label"><div class="title">Cognitive Alignment</div></div>
+        <div class="col-label"><div class="title">Ethical Alignment</div></div>
+        <div class="col-label"><div class="title">Legal Alignment</div></div>
+      </div>
+
+      <div class="loom">
+        <!-- Vertical Strips (Black Warp) -->
+        <div class="v-strip"></div>
+        <div class="v-strip"></div>
+        <div class="v-strip"></div>
+
+        <!-- Horizontal Rows (Red Weft) - Segmented -->
+        
+        <!-- Row 1: Criminal Behavior (Over, Under, Over) -->
+        <div class="h-row">
+          <div class="h-seg label-seg"><span class="title">Criminal Behavior</span></div>
+          <div class="h-seg warp-seg over"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg under"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg over"></div>
+        </div>
+
+        <!-- Row 2: Skill Assessment (Under, Over, Under) -->
+        <div class="h-row">
+          <div class="h-seg label-seg"><span class="title">Skill Assessment</span></div>
+          <div class="h-seg warp-seg under"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg over"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg under"></div>
+        </div>
+
+        <!-- Row 3: Diagnostic Training (Over, Under, Over) -->
+        <div class="h-row">
+          <div class="h-seg label-seg"><span class="title">Diagnostic Training</span></div>
+          <div class="h-seg warp-seg over"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg under"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg over"></div>
+        </div>
+
+        <!-- Row 4: Responsible Marketing (Under, Over, Under) -->
+        <div class="h-row">
+          <div class="h-seg label-seg"><span class="title">Responsible Marketing</span></div>
+          <div class="h-seg warp-seg under"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg over"></div>
+          <div class="h-seg gap-seg"></div>
+          <div class="h-seg warp-seg under"></div>
+        </div>
+
+      </div>
+
+      <div class="lab-label-container">
+        <div class="lab-label"><span>HAVA</span> Lab</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const $ = s => document.querySelectorAll(s);
+    const delay = ms => new Promise(r => setTimeout(r, ms));
+
+    const vStrips = $('.v-strip');
+    const hRows = $('.h-row');
+    const colLabels = $('.col-label');
+    const labLabel = document.querySelector('.lab-label-container');
+
+    async function animate() {
+      // 1. Vertical Strips grow down
+      for (const s of vStrips) {
+        s.classList.add('in');
+        await delay(80); // Faster stagger
+      }
+
+      await delay(100);
+
+      // 2. Column Labels fade in
+      for (const l of colLabels) {
+        l.classList.add('in');
+        await delay(50);
+      }
+
+      await delay(100);
+
+      // 3. Horizontal Rows weave in (segment by segment, all rows in parallel)
+      // We want a constant speed across the whole strip.
+      // Speed = milliseconds per pixel.
+      const SPEED = 1.5; // Faster: 1.5ms per pixel
+
+      // Start all rows animating in parallel
+      const rowPromises = [];
+
+      for (let rowIndex = 0; rowIndex < hRows.length; rowIndex++) {
+        const row = hRows[rowIndex];
+        // Create a promise for this row's animation
+        const rowPromise = (async () => {
+          // Delay before starting this row (stagger rows slightly)
+          await delay(rowIndex * 100);
+
+          const segments = row.querySelectorAll('.h-seg');
+
+          for (const seg of segments) {
+            // Calculate duration based on width
+            const width = seg.offsetWidth;
+            const duration = width * SPEED;
+
+            // Apply dynamic duration and linear easing for continuous flow
+            seg.style.animationDuration = `${duration}ms`;
+            seg.style.animationTimingFunction = 'linear';
+
+            seg.classList.add('in');
+
+            // Wait for this segment to finish before starting the next
+            await delay(duration);
+          }
+        })();
+
+        rowPromises.push(rowPromise);
+      }
+
+      // Wait for all rows to complete
+      await Promise.all(rowPromises);
+
+      await delay(200);
+      labLabel.classList.add('in');
+    }
+
+    // Wait for layout to be stable so offsetWidth is correct
+    window.addEventListener('load', animate);
+    // Fallback in case load already fired
+    if (document.readyState === 'complete') {
+      animate();
+    }
+  })();
+</script>

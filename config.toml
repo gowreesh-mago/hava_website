@@ -1,0 +1,33 @@
+baseURL = "https://hava-lab.uva.nl/"
+languageCode = "en"
+title = "HAVA-Lab"
+
+[params]
+  description = "Human-Aligned Video AI Laboratory - UvA Data Science Centre"
+  author = "HAVA-Lab"
+  ogImage = "/media/og-image.jpg"
+  location = "University Library Singel, Amsterdam"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Mission"
+    url = "/mission/"
+    weight = 2
+  [[menu.main]]
+    name = "Team"
+    url = "/team/"
+    weight = 3
+  [[menu.main]]
+    name = "Publications & News"
+    url = "/publications/"
+    weight = 4
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

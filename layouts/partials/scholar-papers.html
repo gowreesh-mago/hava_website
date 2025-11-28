@@ -1,0 +1,59 @@
+{{/* Scholar papers partial - displays papers sorted by publication date */}}
+{{ if .Site.Data }}
+  {{ $papers := index .Site.Data "scholar-papers" }}
+  {{ if and $papers (gt (len $papers.papers) 0) }}
+    <div class="scholar-papers">
+      {{ range $papers.papers }}
+        <article class="scholar-paper">
+          {{ $title := .title }}
+          {{ $searchUrl := printf "https://scholar.google.com/scholar?q=%s" (replace (replace $title " " "+" -1) "+" "+" -1) }}
+          <h4 class="paper-title">
+            <a href="{{ if .url }}{{ .url }}{{ else }}{{ $searchUrl }}{{ end }}" target="_blank" rel="noopener noreferrer">
+              {{ .title }}
+            </a>
+          </h4>
+
+          <div class="paper-meta">
+            {{ if .authors }}
+              <div class="paper-authors">
+                <span class="label">Authors:</span>
+                <span class="value">
+                  {{- $authorsType := printf "%T" .authors -}}
+                  {{- if or (eq $authorsType "[]interface {}") (eq $authorsType "[]string") -}}
+                    {{- range $index, $author := .authors }}
+                      {{- if $index }}, {{ end }}{{ $author -}}
+                    {{- end -}}
+                  {{- else -}}
+                    {{- .authors -}}
+                  {{- end -}}
+                </span>
+              </div>
+            {{ end }}
+
+            {{ if .year }}
+              <div class="paper-year">
+                <span class="label">Year:</span>
+                <span class="value">{{ .year }}</span>
+              </div>
+            {{ end }}
+
+            {{ if .venue }}
+              <div class="paper-venue">
+                <span class="label">Venue:</span>
+                <span class="value">{{ .venue }}</span>
+              </div>
+            {{ end }}
+          </div>
+
+          <div class="paper-links">
+            {{ $title := .title }}
+            {{ $searchUrl := printf "https://scholar.google.com/scholar?q=%s" (replace (replace $title " " "+" -1) "+" "+" -1) }}
+            
+            {{/* Title is now the main link */}}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
+

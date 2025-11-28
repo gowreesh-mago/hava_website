@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+
+<div class="content-below-hero">
+  {{ .Content }}
+
+  <div class="scholar-section">
+    <h2>Publications</h2>
+    <div class="scrollable-publications">
+      {{ partial "scholar-papers.html" . }}
+    </div>
+  </div>
+
+  <div class="news-section">
+    <h2>News & Events</h2>
+    {{ partial "events-calendar.html" . }}
+  </div>
+
+
+</div>
+{{ end }}

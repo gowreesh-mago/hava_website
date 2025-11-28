@@ -1,0 +1,16 @@
+{
+  "name": "hava-lab-hugo",
+  "version": "1.0.0",
+  "description": "HAVA-Lab website",
+  "main": "index.js",
+  "scripts": {
+    "build:scholar": "node parse-bib.js",
+    "fetch": "node parse-bib.js",
+    "build": "npm run build:scholar && hugo",
+    "dev": "npm run build:scholar && hugo server"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

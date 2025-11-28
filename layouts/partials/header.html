@@ -1,0 +1,11 @@
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-title">HAVA-Lab<span>Human-Aligned Video AI Laboratory</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
+      {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

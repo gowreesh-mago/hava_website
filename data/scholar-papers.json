@@ -1,0 +1,113 @@
+{
+  "lastUpdated": "2025-11-28T21:16:52.845Z",
+  "papers": [
+    {
+      "id": "manzano2025bridging",
+      "title": "Bridging the gap: exposing the hidden challenges towards adoption of artificial intelligence in surgery",
+      "authors": [
+        "Manzano Rodriguez",
+        "Ana",
+        "Snoek",
+        "Cees GM",
+        "Schijven",
+        "Marlies P"
+      ],
+      "year": 2025,
+      "venue": "British Journal of Surgery",
+      "doi": "",
+      "arxiv": "",
+      "url": ""
+    },
+    {
+      "id": "kasarla2025hiervision",
+      "title": "HierVision: Standardized and Reproducible Hierarchical Sources for Vision Datasets",
+      "authors": [
+        "Kasarla",
+        "Tejaswi",
+        "Rooparaghunath",
+        "Ruthu Hulikal",
+        "D'arrigo",
+        "Stefano",
+        "Mago",
+        "Gowreesh",
+        "Jha",
+        "Abhishek",
+        "Ayoughi",
+        "Melika",
+        "Mishra",
+        "Swasti Shreya",
+        "Rodriguez",
+        "Ana Manzano",
+        "Long",
+        "Teng",
+        "Atigh",
+        "Mina Ghadimi",
+        "others"
+      ],
+      "year": 2025,
+      "venue": "Proceedings of the IEEE/CVF International Conference on Computer Vision",
+      "doi": "",
+      "arxiv": "",
+      "url": ""
+    },
+    {
+      "id": "mago2025looking",
+      "title": "Looking Beyond the Obvious: A Survey on Abstract Concept Recognition for Video Understanding",
+      "authors": [
+        "Mago",
+        "Gowreesh",
+        "Mettes",
+        "Pascal",
+        "Rudinac",
+        "Stevan"
+      ],
+      "year": 2025,
+      "venue": "arXiv preprint arXiv:2508.20765",
+      "doi": "",
+      "arxiv": "",
+      "url": ""
+    },
+    {
+      "id": "sartzetaki2025human",
+      "title": "The Human Brain as a Dynamic Mixture of Expert Models in Video Understanding",
+      "authors": [
+        "Sartzetaki",
+        "Christina",
+        "Zonneveld",
+        "Anne W",
+        "Oyarzo",
+        "Pablo",
+        "Gifford",
+        "Alessandro T",
+        "Cichy",
+        "Radoslaw M",
+        "Mettes",
+        "Pascal",
+        "Groen",
+        "Iris IA"
+      ],
+      "year": 2025,
+      "venue": "bioRxiv",
+      "doi": "",
+      "arxiv": "",
+      "url": ""
+    },
+    {
+      "id": "zonneveldstraightening",
+      "title": "Straightening of Natural Visual Sequences in Video DNNs: the Role of Locality and Temporal Coherence",
+      "authors": [
+        "Zonneveld",
+        "Anne W",
+        "Mettes",
+        "Pascal",
+        "Groen",
+        "Iris IA"
+      ],
+      "year": 0,
+      "venue": "",
+      "doi": "",
+      "arxiv": "",
+      "url": ""
+    }
+  ]
+}

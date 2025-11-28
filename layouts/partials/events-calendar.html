@@ -1,0 +1,19 @@
+{{ if .Site.Data.events }}
+<div class="events-calendar">
+  {{ range sort .Site.Data.events "date" "asc" }}
+  <div class="event-item">
+    <div class="event-date">
+      <span class="event-day">{{ dateFormat "02" .date }}</span>
+      <span class="event-month">{{ dateFormat "Jan" .date }}</span>
+    </div>
+    <div class="event-details">
+      <h3>{{ .title }}</h3>
+      <p>{{ .description }}</p>
+      {{ if .link }}
+      <a href="{{ .link }}" class="event-link">More Info &rarr;</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
