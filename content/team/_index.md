@@ -53,6 +53,17 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 <div class="team-grid">
 
 <div class="team-card">
+<img src="../images/tobias.jpg" alt="Prof. dr. Tobias Blanke" class="team-photo">
+<div class="team-info">
+<h3>Prof. dr. Tobias Blanke</h3>
+<p class="role">Co-Principal Investigator</p>
+<p class="faculty">Faculty of Humanities (FGw)</p>
+<p>Leading research on ethical alignment in video-AI algorithms.</p>
+<p><a href="mailto:t.blanke@uva.nl">t.blanke@uva.nl</a></p>
+</div>
+</div>
+
+<div class="team-card">
 <img src="../images/erwin.jpg" alt="Dr. Erwin Berkhout" class="team-photo">
 <div class="team-info">
 <h3>Dr. Erwin Berkhout</h3>
@@ -60,17 +71,6 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 <p class="faculty">Academic Centre for Dentistry Amsterdam (ACTA)</p>
 <p>Leading the diagnostic training project for dental education.</p>
 <p><a href="mailto:e.berkhout@acta.nl">e.berkhout@acta.nl</a></p>
-</div>
-</div>
-
-<div class="team-card">
-<img src="../images/paula_helm.jpg" alt="Prof. dr. Tobias Blanke" class="team-photo">
-<div class="team-info">
-<h3>Prof. dr. Tobias Blanke</h3>
-<p class="role">Co-Principal Investigator</p>
-<p class="faculty">Faculty of Humanities (FGw)</p>
-<p>Leading research on ethical alignment in video-AI algorithms.</p>
-<p><a href="mailto:t.blanke@uva.nl">t.blanke@uva.nl</a></p>
 </div>
 </div>
 
@@ -108,13 +108,13 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<img src="../images/stevan.jpeg" alt="Dr. Stevan Rudinac" class="team-photo">
+<img src="../images/paula_helm.jpg" alt="Dr. Paula Helm" class="team-photo">
 <div class="team-info">
-<h3>Dr. Stevan Rudinac</h3>
+<h3>Dr. Paula Helm</h3>
 <p class="role">Co-Principal Investigator</p>
-<p class="faculty">Faculty of Economics and Business (FEE)</p>
-<p>Leading research on responsible marketing and viral video detection.</p>
-<p><a href="mailto:s.rudinac@uva.nl">s.rudinac@uva.nl</a></p>
+<p class="faculty">Faculty of Humanities (FGw)</p>
+<p>Leading research on ethical alignment in video-AI algorithms.</p>
+<p><a href="mailto:p.m.helm@uva.nl">p.m.helm@uva.nl</a></p>
 </div>
 </div>
 
@@ -129,6 +129,17 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 </div>
 
+<div class="team-card">
+<img src="../images/stevan.jpeg" alt="Dr. Stevan Rudinac" class="team-photo">
+<div class="team-info">
+<h3>Dr. Stevan Rudinac</h3>
+<p class="role">Co-Principal Investigator</p>
+<p class="faculty">Faculty of Economics and Business (FEE)</p>
+<p>Leading research on responsible marketing and viral video detection.</p>
+<p><a href="mailto:s.rudinac@uva.nl">s.rudinac@uva.nl</a></p>
+</div>
+</div>
+
 </div>
 
 
@@ -136,6 +147,14 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 ## Doctoral Candidates
 
 <div class="team-grid">
+
+<div class="team-card">
+<img src="../images/ana-manzano.jpg" alt="Ana Manzano Rodríguez" class="team-photo">
+<div class="team-info">
+<h3>Ana Manzano Rodríguez</h3>
+<p class="supervisors">Prof. dr. Marlies Schijven (AUMC) · Prof. dr. Cees Snoek (FNWI)</p>
+</div>
+</div>
 
 <div class="team-card">
 <img src="../images/anne_zonneveld.jpeg" alt="Anne Zonneveld" class="team-photo">
@@ -154,17 +173,20 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
+<img src="../images/gowreesh-mago.jpg" alt="Gowreesh Mago" class="team-photo">
+<div class="team-info">
+<h3>Gowreesh Mago</h3>
+<p class="supervisors">Dr. Stevan Rudinac (FEE) · Dr. Pascal Mettes (FNWI)</p>
+</div>
+</div>
+
+<div class="team-card">
 <img src="../images/marten_steketee.jpg" alt="Marten Steketee" class="team-photo">
 <div class="team-info">
 <h3>Marten Steketee</h3>
 <p class="supervisors">Dr. mr. Heleen Janssen (FdR) · Prof. dr. Cees Snoek (FNWI)</p>
 </div>
 </div>
-
-</div>
-
-
-<div class="team-grid">
 
 <div class="team-card">
 <img src="../images/ruthu-hulikal-rooparaghunath.jpg" alt="Ruthu Rooparaghunath" class="team-photo">
@@ -175,26 +197,10 @@ The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from 
 </div>
 
 <div class="team-card">
-<img src="../images/ana-manzano.jpg" alt="Ana Manzano Rodríguez" class="team-photo">
-<div class="team-info">
-<h3>Ana Manzano Rodríguez</h3>
-<p class="supervisors">Prof. dr. Marlies Schijven (AUMC) · Prof. dr. Cees Snoek (FNWI)</p>
-</div>
-</div>
-
-<div class="team-card">
 <img src="../images/swasti-mishra.jpg" alt="Swasti Shreya Mishra" class="team-photo">
 <div class="team-info">
 <h3>Swasti Shreya Mishra</h3>
 <p class="supervisors">Dr. Erwin Berkhout (ACTA) · Dr. Pascal Mettes (FNWI)</p>
-</div>
-</div>
-
-<div class="team-card">
-<img src="../images/gowreesh-mago.jpg" alt="Gowreesh Mago" class="team-photo">
-<div class="team-info">
-<h3>Gowreesh Mago</h3>
-<p class="supervisors">Dr. Stevan Rudinac (FEE) · Dr. Pascal Mettes (FNWI)</p>
 </div>
 </div>
 
