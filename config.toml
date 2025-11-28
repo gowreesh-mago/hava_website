@@ -1,15 +1,12 @@
-baseURL = "https://gowreesh-mago.github.io/"
+baseURL = "https://gowreesh-mago.github.io/hava-website/"
 languageCode = "en"
 title = "HAVA-Lab"
+disableKinds = ["RSS"]
 
 [params]
   description = "Human-Aligned Video AI Laboratory - UvA Data Science Centre"
   ogImage = "/media/og-image.jpg"
   location = "University Library Singel, Amsterdam"
-
-[author]
-  name = "HAVA-Lab"
-  email = "info@hava-lab.uva.nl"
 
 [menu]
   [[menu.main]]
