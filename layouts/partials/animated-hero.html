@@ -92,7 +92,8 @@
     margin-right: var(--gap);
     text-align: center;
     opacity: 0;
-    transform: translateY(-15px);
+    transform: translate3d(0, -15px, 0);
+    will-change: transform, opacity;
   }
 
   .col-label:last-child {
@@ -125,6 +126,9 @@
     opacity: 0;
     transform: scaleY(0);
     transform-origin: top;
+    /* Hardware acceleration */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
   }
 
   .v-strip:nth-child(1) { left: var(--label-width); }
@@ -158,6 +162,11 @@
     transform-origin: left;
     /* Box shadow for depth */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* Hardware acceleration */
+    will-change: transform, opacity;
+    transform: translateZ(0) scaleX(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Text-only segments fade instead of expanding */
@@ -229,7 +238,8 @@
     margin-top: 45px;
     text-align: right;
     opacity: 0;
-    transform: translateY(15px);
+    transform: translate3d(0, 15px, 0);
+    will-change: transform, opacity;
   }
 
   .lab-label {
@@ -256,7 +266,7 @@
   }
 
   @keyframes growX {
-    to { opacity: 1; transform: scaleX(1); }
+    to { opacity: 1; transform: translateZ(0) scaleX(1); }
   }
 
   @keyframes fadeIn {
@@ -264,11 +274,11 @@
   }
 
   @keyframes fadeDown {
-    to { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
   }
 
   @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
   }
 
   @media (max-width: 1200px) {
@@ -310,6 +320,29 @@
       opacity: 0.7;
     }
     .col-label .title { font-size: 0.55rem; }
+
+    /* Mobile performance optimizations */
+    .h-seg {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .h-seg::before {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%);
+    }
+
+    .h-seg.over {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .h-seg.under {
+      box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+    }
+
+    .v-strip {
+      will-change: transform, opacity;
+    }
   }
 
   @media (max-width: 480px) {
@@ -328,6 +361,11 @@
     .col-label .title {
       font-size: 0.45rem;
       opacity: 0.65;
+    }
+
+    /* Extra mobile optimizations for very small screens */
+    .h-seg::before {
+      display: none; /* Remove gradient overlay entirely */
     }
   }
 </style>
@@ -421,6 +459,18 @@
     const labLabel = document.querySelector('.lab-label-container');
 
     async function animate() {
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion) {
+        // Skip animation, just show everything
+        vStrips.forEach(s => s.classList.add('in'));
+        colLabels.forEach(l => l.classList.add('in'));
+        document.querySelectorAll('.h-seg').forEach(seg => seg.classList.add('in'));
+        labLabel.classList.add('in');
+        return;
+      }
+
       // 1. Vertical Strips grow down
       for (const s of vStrips) {
         s.classList.add('in');
@@ -442,31 +492,41 @@
       // Speed = milliseconds per pixel.
       const SPEED = 1.5; // Faster: 1.5ms per pixel
 
+      // Pre-calculate all widths and durations to avoid layout thrashing
+      const rowData = [];
+      for (let rowIndex = 0; rowIndex < hRows.length; rowIndex++) {
+        const row = hRows[rowIndex];
+        const segments = row.querySelectorAll('.h-seg');
+        const segmentData = [];
+
+        for (const seg of segments) {
+          const width = seg.offsetWidth;
+          const duration = width * SPEED;
+          segmentData.push({ element: seg, duration });
+        }
+
+        rowData.push({ segments: segmentData });
+      }
+
       // Start all rows animating in parallel
       const rowPromises = [];
 
-      for (let rowIndex = 0; rowIndex < hRows.length; rowIndex++) {
-        const row = hRows[rowIndex];
+      for (let rowIndex = 0; rowIndex < rowData.length; rowIndex++) {
+        const data = rowData[rowIndex];
         // Create a promise for this row's animation
         const rowPromise = (async () => {
           // Delay before starting this row (stagger rows slightly)
           await delay(rowIndex * 100);
 
-          const segments = row.querySelectorAll('.h-seg');
+          for (const segData of data.segments) {
+            // Apply pre-calculated duration and linear easing
+            segData.element.style.animationDuration = `${segData.duration}ms`;
+            segData.element.style.animationTimingFunction = 'linear';
 
-          for (const seg of segments) {
-            // Calculate duration based on width
-            const width = seg.offsetWidth;
-            const duration = width * SPEED;
-
-            // Apply dynamic duration and linear easing for continuous flow
-            seg.style.animationDuration = `${duration}ms`;
-            seg.style.animationTimingFunction = 'linear';
-
-            seg.classList.add('in');
+            segData.element.classList.add('in');
 
             // Wait for this segment to finish before starting the next
-            await delay(duration);
+            await delay(segData.duration);
           }
         })();
 
@@ -478,6 +538,13 @@
 
       await delay(200);
       labLabel.classList.add('in');
+
+      // Clean up will-change properties after animation completes to save resources
+      await delay(500);
+      vStrips.forEach(s => s.style.willChange = 'auto');
+      colLabels.forEach(l => l.style.willChange = 'auto');
+      document.querySelectorAll('.h-seg').forEach(seg => seg.style.willChange = 'auto');
+      labLabel.style.willChange = 'auto';
     }
 
     // Wait for layout to be stable so offsetWidth is correct
