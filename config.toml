@@ -1,4 +1,4 @@
-baseURL = "https://gowreesh-mago.github.io/hava-website/"
+baseURL = "https://gowreesh-mago.github.io/hava_website/"
 languageCode = "en"
 title = "HAVA-Lab"
 disableKinds = ["RSS"]
