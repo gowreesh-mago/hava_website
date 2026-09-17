@@ -1,0 +1,56 @@
+{{ define "main" }}
+{{ partial "page-hero.html" . }}
+<div class="prose">{{ .Content }}</div>
+
+{{ $items := sort .Site.Data.media "date" "desc" }}
+<section class="section" id="media">
+  <div class="section-head">
+    <h2>In the media</h2>
+    <span class="eyebrow">{{ len $items }} item{{ if ne (len $items) 1 }}s{{ end }}</span>
+  </div>
+  {{ if $items }}
+  <div class="media-list">
+    {{ range $items }}
+    {{ $href := "" }}{{ with .link }}{{ $href = cond (hasPrefix . "http") . (relURL .) }}{{ end }}
+    <article class="media-row">
+      {{ with .image }}<img class="media-thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}<div class="media-thumb media-thumb--empty" aria-hidden="true"></div>{{ end }}
+      <div class="media-body">
+        <div class="eyebrow"><span class="red">{{ .type }}</span>{{ with .outlet }}<span class="muted">{{ . }}</span>{{ end }}<span class="muted">{{ dateFormat "02 Jan 2006" .date }}</span></div>
+        <h3>{{ if $href }}<a href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
+        {{ with .summary }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{ if $href }}<a class="btn btn--outline" href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>Open &rarr;</a>{{ end }}
+    </article>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p class="empty-state">Nothing listed yet. Add items to <code>data/media.yml</code>.</p>
+  {{ end }}
+</section>
+
+<section class="section band-dark" id="visibility">
+  <div class="section-head"><h2>Visibility</h2><span class="eyebrow">Where to find the lab</span></div>
+  <div class="visibility">
+    <div class="visibility-card">
+      <div class="eyebrow">Host</div>
+      <h3><a href="https://dsc.uva.nl/">UvA Data Science Centre</a></h3>
+      <p>HAVA-Lab is a DSC Lighthouse project, part of the UvA Library.</p>
+    </div>
+    <div class="visibility-card">
+      <div class="eyebrow">Location</div>
+      <h3>{{ .Site.Params.location }}</h3>
+      <p>The shared lab space where the PhD cohort works together.</p>
+    </div>
+    <div class="visibility-card">
+      <div class="eyebrow">Press &amp; invitations</div>
+      <h3><a href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a></h3>
+      <p>For interviews, talks and collaborations, contact the lead principal investigator.</p>
+    </div>
+    <div class="visibility-card">
+      <div class="eyebrow">Sessions</div>
+      <h3><a href="{{ "publications/#events" | relURL }}">Meetups &amp; sessions</a></h3>
+      <p>Monthly faculty-focus, two workshops a year and a yearly HAVA-conference open to the UvA community.</p>
+    </div>
+  </div>
+</section>
+{{ end }}

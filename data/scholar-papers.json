@@ -1,113 +1,108 @@
 {
-  "lastUpdated": "2025-11-28T21:16:52.845Z",
+  "lastUpdated": "2026-09-17T13:15:17.251Z",
   "papers": [
+    {
+      "id": "mishra2026hyperbolic",
+      "title": "Hyperbolic u-net for robust medical image segmentation",
+      "authors": [
+        "Swasti Shreya Mishra",
+        "Max van Spengler",
+        "Erwin Berkhout",
+        "Pascal Mettes"
+      ],
+      "year": 2026,
+      "venue": "Medical Imaging with Deep Learning",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": ""
+    },
+    {
+      "id": "mago2026looking",
+      "title": "Looking Beyond the Obvious: A Survey on Abstract Concept Recognition for Video Understanding: G. Mago et al.",
+      "authors": [
+        "Gowreesh Mago",
+        "Pascal Mettes",
+        "Stevan Rudinac"
+      ],
+      "year": 2026,
+      "venue": "International Journal of Computer Vision",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": ""
+    },
     {
       "id": "manzano2025bridging",
       "title": "Bridging the gap: exposing the hidden challenges towards adoption of artificial intelligence in surgery",
       "authors": [
-        "Manzano Rodriguez",
-        "Ana",
-        "Snoek",
-        "Cees GM",
-        "Schijven",
-        "Marlies P"
+        "Ana Manzano Rodriguez",
+        "Cees GM Snoek",
+        "Marlies P Schijven"
       ],
       "year": 2025,
       "venue": "British Journal of Surgery",
       "doi": "",
       "arxiv": "",
-      "url": ""
+      "url": "",
+      "pdf": ""
     },
     {
       "id": "kasarla2025hiervision",
       "title": "HierVision: Standardized and Reproducible Hierarchical Sources for Vision Datasets",
       "authors": [
-        "Kasarla",
-        "Tejaswi",
-        "Rooparaghunath",
-        "Ruthu Hulikal",
-        "D'arrigo",
-        "Stefano",
-        "Mago",
-        "Gowreesh",
-        "Jha",
-        "Abhishek",
-        "Ayoughi",
-        "Melika",
-        "Mishra",
-        "Swasti Shreya",
-        "Rodriguez",
-        "Ana Manzano",
-        "Long",
-        "Teng",
-        "Atigh",
-        "Mina Ghadimi",
+        "Tejaswi Kasarla",
+        "Ruthu Hulikal Rooparaghunath",
+        "Stefano D'arrigo",
+        "Gowreesh Mago",
+        "Abhishek Jha",
+        "Melika Ayoughi",
+        "Swasti Shreya Mishra",
+        "Ana Manzano Rodriguez",
+        "Teng Long",
+        "Mina Ghadimi Atigh",
         "others"
       ],
       "year": 2025,
       "venue": "Proceedings of the IEEE/CVF International Conference on Computer Vision",
       "doi": "",
       "arxiv": "",
-      "url": ""
-    },
-    {
-      "id": "mago2025looking",
-      "title": "Looking Beyond the Obvious: A Survey on Abstract Concept Recognition for Video Understanding",
-      "authors": [
-        "Mago",
-        "Gowreesh",
-        "Mettes",
-        "Pascal",
-        "Rudinac",
-        "Stevan"
-      ],
-      "year": 2025,
-      "venue": "arXiv preprint arXiv:2508.20765",
-      "doi": "",
-      "arxiv": "",
-      "url": ""
+      "url": "",
+      "pdf": ""
     },
     {
       "id": "sartzetaki2025human",
       "title": "The Human Brain as a Dynamic Mixture of Expert Models in Video Understanding",
       "authors": [
-        "Sartzetaki",
-        "Christina",
-        "Zonneveld",
-        "Anne W",
-        "Oyarzo",
-        "Pablo",
-        "Gifford",
-        "Alessandro T",
-        "Cichy",
-        "Radoslaw M",
-        "Mettes",
-        "Pascal",
-        "Groen",
-        "Iris IA"
+        "Christina Sartzetaki",
+        "Anne W Zonneveld",
+        "Pablo Oyarzo",
+        "Alessandro T Gifford",
+        "Radoslaw M Cichy",
+        "Pascal Mettes",
+        "Iris IA Groen"
       ],
       "year": 2025,
       "venue": "bioRxiv",
       "doi": "",
       "arxiv": "",
-      "url": ""
+      "url": "",
+      "pdf": ""
     },
     {
       "id": "zonneveldstraightening",
       "title": "Straightening of Natural Visual Sequences in Video DNNs: the Role of Locality and Temporal Coherence",
       "authors": [
-        "Zonneveld",
-        "Anne W",
-        "Mettes",
-        "Pascal",
-        "Groen",
-        "Iris IA"
+        "Anne W Zonneveld",
+        "Pascal Mettes",
+        "Iris IA Groen"
       ],
       "year": 0,
       "venue": "",
       "doi": "",
       "arxiv": "",
-      "url": ""
+      "url": "",
+      "pdf": ""
     }
   ]
 }

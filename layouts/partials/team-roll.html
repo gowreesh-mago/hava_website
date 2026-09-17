@@ -1,0 +1,24 @@
+{{/* Rolling strip of everyone in the lab, generated from data/team.yml */}}
+{{ $t := .Site.Data.team }}
+{{ $people := slice }}
+{{ range (slice $t.leadership $t.copis $t.phd) }}{{ range . }}{{ $people = $people | append . }}{{ end }}{{ end }}
+{{ if $people }}
+<section class="team-roll" aria-label="The HAVA-Lab collective">
+  <div class="team-roll-head">
+    <span class="eyebrow">The collective</span>
+    <a class="eyebrow eyebrow--link" href="{{ "team/" | relURL }}">All people &rarr;</a>
+  </div>
+  <div class="team-roll-track">
+    {{ range seq 2 }}
+    <div class="team-roll-group"{{ if eq . 2 }} aria-hidden="true"{{ end }}>
+      {{ range $people }}
+      <figure class="team-roll-item">
+        <img src="{{ .photo | relURL }}" alt="{{ .name }}" loading="lazy" width="120" height="120">
+        <figcaption>{{ .name }}</figcaption>
+      </figure>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,6 +1,14 @@
 {{ define "main" }}
-<article>
+<div class="page-hero page-hero--article">
+  <div class="eyebrow eyebrow--red">
+    <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+    {{ if not .Date.IsZero }}<span class="muted">{{ .Date.Format "02 January 2006" }}</span>{{ end }}
+    {{ with .Params.author }}<span class="muted">{{ . }}</span>{{ end }}
+  </div>
   <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+</div>
+<article class="prose prose--narrow">
   {{ .Content }}
 </article>
 {{ end }}

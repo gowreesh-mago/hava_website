@@ -1,9 +1,32 @@
 <footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <p><strong>HAVA-Lab</strong> — Human-Aligned Video AI Laboratory</p>
-    <p>An interdisciplinary PhD programme of the <a href="https://dsc.uva.nl/">UvA Data Science Centre</a>, part of the UvA Library.</p>
-    <p>Location: University Library Singel, Amsterdam</p>
-    <p>Contact: <a href="mailto:c.g.m.snoek@uva.nl">c.g.m.snoek@uva.nl</a></p>
-    <p>&copy; {{ now.Year }} University of Amsterdam. All rights reserved.</p>
+  <div class="footer-grid">
+    <div class="footer-about">
+      <div class="footer-wordmark">HAVA-Lab</div>
+      <p>Human-Aligned Video AI Laboratory. An interdisciplinary PhD programme of the <a href="https://dsc.uva.nl/">UvA Data Science Centre</a>, part of the UvA Library.</p>
+      <p>{{ .Site.Params.location }}</p>
+      <a class="footer-mail" href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a>
+    </div>
+    <div class="footer-col">
+      <div class="eyebrow">Programme</div>
+      <a href="{{ "mission/" | relURL }}">Mission &amp; research</a>
+      <a href="{{ "team/" | relURL }}">Team &amp; PhD programme</a>
+      <a href="{{ "publications/" | relURL }}">Publications &amp; news</a>
+    </div>
+    <div class="footer-col">
+      <div class="eyebrow">Writing</div>
+      <a href="{{ "blog/" | relURL }}">Blog</a>
+      <a href="{{ "media/" | relURL }}">Media &amp; visibility</a>
+      <a href="{{ "news/" | relURL }}">News archive</a>
+    </div>
+    <div class="footer-col">
+      <div class="eyebrow">Elsewhere</div>
+      <a href="https://dsc.uva.nl/">UvA Data Science Centre</a>
+      <a href="https://ivi.fnwi.uva.nl/vislab/">VIS Lab</a>
+      <a href="https://www.uva.nl/">University of Amsterdam</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; {{ now.Year }} University of Amsterdam. All rights reserved.</span>
+    <span>DSC Lighthouse · Responsible Digital Transformations</span>
   </div>
 </footer>

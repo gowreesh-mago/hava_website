@@ -1,6 +1,21 @@
+# Meetups, talks and sessions. One entry per event, newest anywhere in the list
+# (the site sorts them). Upcoming events are shown first on the home page.
+#
+# Fields:
+#   title        required
+#   date         required, YYYY-MM-DD
+#   kind         e.g. Faculty-focus, Workshop, Conference, Away day, Talk
+#   time         optional, e.g. "16:00" or "10:00–16:00"
+#   location     optional
+#   speaker      optional, who presents
+#   description  optional, one or two sentences
+#   link         optional, invite / registration / recap URL
+#   linkLabel    optional, button text (defaults to "Register" for upcoming, "Recap" for past)
+
 - title: "DSC Away Day"
   date: "2025-06-16"
+  kind: "Away day"
+  location: "UvA Data Science Centre"
   description: "Research highlights from PhD student 1 presented together with an invited speaker."
   link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
-
-
+  linkLabel: "Recap"

@@ -1,59 +1,40 @@
-{{/* Scholar papers partial - displays papers sorted by publication date */}}
-{{ if .Site.Data }}
-  {{ $papers := index .Site.Data "scholar-papers" }}
-  {{ if and $papers (gt (len $papers.papers) 0) }}
-    <div class="scholar-papers">
-      {{ range $papers.papers }}
-        <article class="scholar-paper">
-          {{ $title := .title }}
-          {{ $searchUrl := printf "https://scholar.google.com/scholar?q=%s" (replace (replace $title " " "+" -1) "+" "+" -1) }}
-          <h4 class="paper-title">
-            <a href="{{ if .url }}{{ .url }}{{ else }}{{ $searchUrl }}{{ end }}" target="_blank" rel="noopener noreferrer">
-              {{ .title }}
-            </a>
-          </h4>
+{{/*
+  Publication list from data/scholar-papers.json (generated from bibliography.bib).
+  Call with (dict "ctx" . "limit" N "start" N).
+*/}}
+{{ $data := index .ctx.Site.Data "scholar-papers" }}
+{{ $papers := slice }}
+{{ with $data }}{{ $papers = .papers }}{{ end }}
+{{ $limit := .limit | default 0 }}
+{{ if gt $limit 0 }}{{ $papers = first $limit $papers }}{{ end }}
 
-          <div class="paper-meta">
-            {{ if .authors }}
-              <div class="paper-authors">
-                <span class="label">Authors:</span>
-                <span class="value">
-                  {{- $authorsType := printf "%T" .authors -}}
-                  {{- if or (eq $authorsType "[]interface {}") (eq $authorsType "[]string") -}}
-                    {{- range $index, $author := .authors }}
-                      {{- if $index }}, {{ end }}{{ $author -}}
-                    {{- end -}}
-                  {{- else -}}
-                    {{- .authors -}}
-                  {{- end -}}
-                </span>
-              </div>
-            {{ end }}
-
-            {{ if .year }}
-              <div class="paper-year">
-                <span class="label">Year:</span>
-                <span class="value">{{ .year }}</span>
-              </div>
-            {{ end }}
-
-            {{ if .venue }}
-              <div class="paper-venue">
-                <span class="label">Venue:</span>
-                <span class="value">{{ .venue }}</span>
-              </div>
-            {{ end }}
-          </div>
-
-          <div class="paper-links">
-            {{ $title := .title }}
-            {{ $searchUrl := printf "https://scholar.google.com/scholar?q=%s" (replace (replace $title " " "+" -1) "+" "+" -1) }}
-            
-            {{/* Title is now the main link */}}
-          </div>
-        </article>
-      {{ end }}
+{{ if $papers }}
+<div class="pubs" id="pub-list">
+  {{ range $i, $p := $papers }}
+  {{ $search := printf "https://scholar.google.com/scholar?q=%s" (querify "q" $p.title | strings.TrimPrefix "q=") }}
+  {{ $main := or $p.url $p.pdf (cond (ne $p.doi "") (printf "https://doi.org/%s" $p.doi) "") (cond (ne $p.arxiv "") (printf "https://arxiv.org/abs/%s" $p.arxiv) "") $search }}
+  <article class="pub-row" data-search="{{ lower (printf "%s %s %s %v" $p.title (delimit $p.authors " ") $p.venue $p.year) }}">
+    <span class="pub-n">{{ printf "%02d" (add $i 1) }}</span>
+    <div class="pub-body">
+      <h3 class="pub-title"><a href="{{ $main }}" target="_blank" rel="noopener">{{ $p.title }}</a></h3>
+      <div class="pub-meta">
+        {{ if $p.authors }}<span class="pub-authors">{{ delimit $p.authors ", " }}</span>{{ end }}
+      </div>
+      <div class="pub-meta pub-meta--venue">
+        {{ with $p.venue }}<span class="pub-venue">{{ . }}</span>{{ end }}
+        {{ if gt $p.year 0 }}<span class="pub-year">{{ $p.year }}</span>{{ end }}
+      </div>
     </div>
+    <div class="pub-links">
+      {{ with $p.pdf }}<a class="chip chip--solid" href="{{ . }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+      {{ with $p.doi }}<a class="chip" href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}
+      {{ with $p.arxiv }}<a class="chip" href="https://arxiv.org/abs/{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
+      {{ with $p.url }}<a class="chip" href="{{ . }}" target="_blank" rel="noopener">Link</a>{{ end }}
+      {{ if not (or $p.pdf $p.doi $p.arxiv $p.url) }}<a class="chip" href="{{ $search }}" target="_blank" rel="noopener">Scholar</a>{{ end }}
+    </div>
+  </article>
   {{ end }}
+</div>
+{{ else }}
+<p class="empty-state">No publications yet. Add entries to <code>bibliography.bib</code>.</p>
 {{ end }}
-

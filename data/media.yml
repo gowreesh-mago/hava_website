@@ -1,0 +1,25 @@
+# Press coverage, talks, videos and other outside visibility.
+# One entry per item; the page sorts newest first.
+#
+# Fields:
+#   title     required
+#   date      required, YYYY-MM-DD
+#   type      Press | Talk | Video | Event | Podcast | Award
+#   outlet    optional, where it appeared (e.g. "UvA Data Science Centre")
+#   summary   optional, one sentence
+#   link      optional, URL
+#   image     optional, path under static/, e.g. "images/opening.jpg"
+
+- title: "Official opening of the HAVA-Lab by Peter-Paul Verbeek"
+  date: "2024-10-16"
+  type: "Event"
+  outlet: "UvA Data Science Centre"
+  summary: "The HAVA-Lab was officially opened at the University Library Singel, celebrating the formal launch of the research programme."
+  link: "news/2024-10-16-opening/"
+
+- title: "DSC Away Day recap"
+  date: "2025-06-16"
+  type: "Press"
+  outlet: "UvA Data Science Centre"
+  summary: "Research highlights from HAVA-Lab presented at the DSC Away Day."
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"

@@ -1,22 +1,78 @@
 {{ define "main" }}
-<article>
-  <h1>{{ .Title }}</h1>
+{{ $data := index .Site.Data "scholar-papers" }}
+{{ $papers := slice }}{{ with $data }}{{ $papers = .papers }}{{ end }}
+{{ $news := where .Site.RegularPages "Section" "news" }}
 
-<div class="content-below-hero">
-  {{ .Content }}
+<div class="split split--hero">
+  <div class="split-main">
+    {{ partial "page-hero.html" . }}
+    <div class="prose">{{ .Content }}</div>
+    <label class="search">
+      <span class="visually-hidden">Search publications</span>
+      <input type="search" id="pub-search" placeholder="Search title, author, venue, year…" autocomplete="off">
+    </label>
+  </div>
+  <aside class="split-side">
+    {{ $venues := slice }}
+    {{ range $papers }}{{ with .venue }}{{ $venues = $venues | append . }}{{ end }}{{ end }}
+    {{ with uniq $venues }}
+    <div class="side-block">
+      <div class="eyebrow">Venues on record</div>
+      <div class="tags">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
+    </div>
+    {{ end }}
+    <div class="side-block">
+      <div class="eyebrow">Target venues</div>
+      <div class="tags"><span class="tag">CVPR</span><span class="tag">NeurIPS</span><span class="tag">ACM Multimedia</span><span class="tag">ACM FAccT</span><span class="tag">Discipline-specific</span></div>
+    </div>
+  </aside>
+</div>
 
-  <div class="scholar-section">
+<section class="section" id="publications">
+  <div class="section-head">
     <h2>Publications</h2>
-    <div class="scrollable-publications">
-      {{ partial "scholar-papers.html" . }}
+    <span class="eyebrow" id="pub-count">{{ len $papers }} on record</span>
+  </div>
+  {{ partial "scholar-papers.html" (dict "ctx" .) }}
+</section>
+
+<section class="section band-dark" id="events">
+  <div class="section-head">
+    <h2>News &amp; events</h2>
+    <span class="eyebrow section-head-meta"><span class="pulse">&#9679;</span> Faculty-focus · workshops · conference</span>
+  </div>
+  {{ partial "events-list.html" (dict "ctx" . "variant" "dark") }}
+  {{ if $news }}
+  <div class="news-strip">
+    <div class="eyebrow">In the news</div>
+    <div class="news-strip-items">
+      {{ range $news.ByDate.Reverse }}
+      <a class="news-strip-item" href="{{ .RelPermalink }}">
+        <span class="mono">{{ .Date.Format "02 Jan 2006" }}</span>
+        <span>{{ .Title }}</span>
+      </a>
+      {{ end }}
     </div>
   </div>
+  {{ end }}
+</section>
 
-  <div class="news-section">
-    <h2>News & Events</h2>
-    {{ partial "events-calendar.html" . }}
-  </div>
-
-
-</div>
+<script>
+(function(){
+  var input = document.getElementById('pub-search');
+  var rows = document.querySelectorAll('#pub-list .pub-row');
+  var count = document.getElementById('pub-count');
+  if(!input || !rows.length) return;
+  var total = rows.length;
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function(r){
+      var hit = !q || r.getAttribute('data-search').indexOf(q) !== -1;
+      r.hidden = !hit; if(hit) shown++;
+    });
+    count.textContent = q ? shown + ' of ' + total + ' shown' : total + ' on record';
+  });
+})();
+</script>
 {{ end }}

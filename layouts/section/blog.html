@@ -11,9 +11,13 @@
     <div>
       <h3>{{ .Title }}</h3>
       {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      {{ with .Params.author }}<span class="mono muted">{{ . }}</span>{{ end }}
     </div>
+    <span class="mono red">Read &rarr;</span>
   </a>
   {{ end }}
 </div>
+{{ else }}
+<p class="empty-state">No posts yet. The first write-ups from the lab are on their way.</p>
 {{ end }}
 {{ end }}

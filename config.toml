@@ -1,31 +1,42 @@
 baseURL = "https://gowreesh-mago.github.io/hava_website/"
 languageCode = "en"
 title = "HAVA-Lab"
-disableKinds = ["RSS"]
+disableKinds = ["RSS", "taxonomy", "term"]
 
 [params]
   description = "Human-Aligned Video AI Laboratory - UvA Data Science Centre"
   ogImage = "/media/og-image.jpg"
   location = "University Library Singel, Amsterdam"
+  contactEmail = "c.g.m.snoek@uva.nl"
+  # How many items the home page shows before linking to the full list
+  pubsOnHome = 5
+  eventsOnHome = 4
 
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "/"
+    pageRef = "/"
     weight = 1
   [[menu.main]]
     name = "Mission"
-    url = "/mission/"
+    pageRef = "/mission"
     weight = 2
   [[menu.main]]
     name = "Team"
-    url = "/team/"
+    pageRef = "/team"
     weight = 3
   [[menu.main]]
     name = "Publications & News"
-    url = "/publications/"
+    pageRef = "/publications"
     weight = 4
-
+  [[menu.main]]
+    name = "Blog"
+    pageRef = "/blog"
+    weight = 5
+  [[menu.main]]
+    name = "Media"
+    pageRef = "/media"
+    weight = 6
 
 [markup]
   [markup.goldmark]

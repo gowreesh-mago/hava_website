@@ -1,6 +1,57 @@
 {{ define "main" }}
-<article>
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-</article>
+{{ $t := .Site.Data.team }}
+{{ partial "page-hero.html" . }}
+<div class="prose">{{ .Content }}</div>
+
+{{ with .Params.stats }}
+<section class="stats stats--inline">
+  {{ range . }}
+  <div class="stat"><div class="stat-n">{{ .n }}</div><div class="eyebrow">{{ .label }}</div></div>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ range $group := slice (dict "title" "Leadership" "people" $t.leadership) (dict "title" "Co-Principal Investigators" "people" $t.copis) }}
+{{ with $group.people }}
+<section class="section">
+  <div class="section-head"><h2>{{ $group.title }}</h2></div>
+  <div class="people">
+    {{ range $i, $m := . }}
+    <div class="person">
+      <span class="pub-n">{{ printf "%02d" (add $i 1) }}</span>
+      <img class="person-photo" src="{{ $m.photo | relURL }}" alt="{{ $m.name }}" loading="lazy" width="96" height="96">
+      <div class="person-body">
+        <h3>{{ $m.name }}</h3>
+        <div class="eyebrow eyebrow--red">{{ $m.role }}</div>
+        {{ with $m.bio }}<p>{{ . }}</p>{{ end }}
+      </div>
+      <div class="person-side">
+        <span class="mono">{{ $m.faculty }}</span>
+        {{ with $m.email }}<a class="mono link-rule" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{ with $t.phd }}
+<section class="section band-panel" id="phd">
+  <div class="section-head">
+    <h2>Doctoral Candidates</h2>
+    <span class="eyebrow">One human-aligned supervisor · one video-AI supervisor</span>
+  </div>
+  <div class="cohort">
+    {{ range $i, $m := . }}
+    <div class="cohort-card">
+      <img src="{{ $m.photo | relURL }}" alt="{{ $m.name }}" loading="lazy" width="200" height="200">
+      <span class="eyebrow eyebrow--red">{{ printf "%02d" (add $i 1) }}</span>
+      <h3>{{ $m.name }}</h3>
+      {{ with $m.supervisors }}<p class="mono">{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
 {{ end }}

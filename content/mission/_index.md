@@ -1,5 +1,6 @@
 ---
 title: "Mission & Research"
+eyebrow: "Research programme"
 description: "HAVA-Lab focuses on human-aligned video-AI, shifting from raw accuracy to alignment with human values, legal norms, and societal acceptance."
 ---
 

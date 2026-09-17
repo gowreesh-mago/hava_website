@@ -1,0 +1,52 @@
+{{/*
+  Events list from data/events.yml.
+  Call with (dict "ctx" . "limit" N "variant" "dark"|"light").
+  Upcoming events first (soonest first), then past events (most recent first).
+*/}}
+{{ $limit := .limit | default 0 }}
+{{ $variant := .variant | default "light" }}
+{{ $today := now.Format "2006-01-02" }}
+{{ $upcoming := slice }}
+{{ $past := slice }}
+{{ range .ctx.Site.Data.events }}
+  {{ $d := (time .date).Format "2006-01-02" }}
+  {{ $e := merge . (dict "iso" $d) }}
+  {{ if ge $d $today }}{{ $upcoming = $upcoming | append $e }}{{ else }}{{ $past = $past | append $e }}{{ end }}
+{{ end }}
+{{ $events := sort $upcoming "iso" "asc" | append (sort $past "iso" "desc") }}
+{{ if gt $limit 0 }}{{ $events = first $limit $events }}{{ end }}
+
+{{ if $events }}
+<div class="events events--{{ $variant }}">
+  {{ range $events }}
+  {{ $ev := . }}
+  {{ $isUpcoming := ge .iso $today }}
+  <div class="event-row{{ if $isUpcoming }} is-upcoming{{ end }}">
+    <div class="event-date">
+      <span class="event-day">{{ dateFormat "02" .date }}</span>
+      <span class="event-month">{{ dateFormat "Jan 2006" .date }}</span>
+    </div>
+    <div class="event-body">
+      <div class="event-meta">
+        {{ with .kind }}<span class="event-kind">{{ . }}</span>{{ end }}
+        {{ with .time }}<span>{{ . }}</span>{{ end }}
+        <span class="event-state">{{ if $isUpcoming }}Upcoming{{ else }}Past{{ end }}</span>
+      </div>
+      <h3 class="event-title">{{ .title }}</h3>
+      {{ with .description }}<p class="event-desc">{{ . }}</p>{{ end }}
+      {{ if or .speaker .location }}
+      <div class="event-where">{{ with .speaker }}{{ . }}{{ end }}{{ if and .speaker .location }} · {{ end }}{{ with .location }}{{ . }}{{ end }}</div>
+      {{ end }}
+    </div>
+    <div class="event-action">
+      {{ with .link }}
+      {{ $label := $ev.linkLabel | default (cond $isUpcoming "Register" "Recap") }}
+      <a class="btn btn--outline" href="{{ . }}"{{ if hasPrefix . "http" }} target="_blank" rel="noopener"{{ end }}>{{ $label }} &rarr;</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ else }}
+<p class="empty-state">No events scheduled yet. Add one to <code>data/events.yml</code>.</p>
+{{ end }}

@@ -88,13 +88,19 @@ function parseBibFile(filePath) {
 function parseAuthors(authorString) {
   if (!authorString) return [];
 
-  // Split by " and " or commas
-  const authors = authorString
-    .split(/\s+and\s+|,/)
+  // BibTeX separates authors with " and ". Each author is either
+  // "First Last" or "Last, First"; normalise both to "First Last".
+  return authorString
+    .split(/\s+and\s+/)
     .map(a => a.trim())
-    .filter(a => a.length > 0);
-
-  return authors;
+    .filter(a => a.length > 0)
+    .map(a => {
+      const comma = a.indexOf(',');
+      if (comma === -1) return a;
+      const last = a.slice(0, comma).trim();
+      const first = a.slice(comma + 1).trim();
+      return first ? `${first} ${last}` : last;
+    });
 }
 
 /**
@@ -113,7 +119,8 @@ function convertToScholarFormat(bibEntries) {
         venue: entry.booktitle || entry.journal || entry.venue || '',
         doi: entry.doi || '',
         arxiv: entry.arxiv || entry.eprint || '',
-        url: entry.url || ''
+        url: entry.url || '',
+        pdf: entry.pdf || ''
       };
     })
     .filter(paper => paper.title) // Remove entries without title
