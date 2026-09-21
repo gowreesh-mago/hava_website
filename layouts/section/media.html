@@ -13,7 +13,7 @@
     {{ range $items }}
     {{ $href := "" }}{{ with .link }}{{ $href = cond (hasPrefix . "http") . (relURL .) }}{{ end }}
     <article class="media-row">
-      {{ with .image }}<img class="media-thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}<div class="media-thumb media-thumb--empty" aria-hidden="true"></div>{{ end }}
+      {{ with .image }}<img class="media-thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
       <div class="media-body">
         <div class="eyebrow"><span class="red">{{ .type }}</span>{{ with .outlet }}<span class="muted">{{ . }}</span>{{ end }}<span class="muted">{{ dateFormat "02 Jan 2006" .date }}</span></div>
         <h3>{{ if $href }}<a href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
