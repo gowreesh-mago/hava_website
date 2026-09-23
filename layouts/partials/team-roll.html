@@ -3,10 +3,10 @@
 {{ $people := slice }}
 {{ range (slice $t.leadership $t.copis $t.phd) }}{{ range . }}{{ $people = $people | append . }}{{ end }}{{ end }}
 {{ if $people }}
-<section class="team-roll" aria-label="The HAVA-Lab collective">
+<section class="team-roll" aria-label="The HAVA-Lab team">
   <div class="team-roll-head">
-    <span class="eyebrow">The collective</span>
-    <a class="eyebrow eyebrow--link" href="{{ "team/" | relURL }}">All people &rarr;</a>
+    <span class="eyebrow">Our team</span>
+    <a class="eyebrow eyebrow--link" href="{{ "team/" | relURL }}">Meet the team &rarr;</a>
   </div>
   <div class="team-roll-track">
     {{ range seq 2 }}

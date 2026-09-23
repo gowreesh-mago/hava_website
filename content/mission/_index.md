@@ -1,36 +1,49 @@
 ---
 title: "Mission & Research"
 eyebrow: "Research programme"
-description: "HAVA-Lab focuses on human-aligned video-AI, shifting from raw accuracy to alignment with human values, legal norms, and societal acceptance."
+description: "We study what human alignment means for video AI, how to build it into algorithms, and what determines whether people accept these systems."
+objectives:
+  - n: "Objective 01"
+    title: "Human alignment in video-AI"
+    short: "Three PhD projects study how cognition, ethics and law can inform the design, training and use of video AI."
+    link: "mission/#research-objective-1-human-alignment-in-video-ai"
+  - n: "Objective 02"
+    title: "Human-aligned video-AI for UvA"
+    short: "Four PhD projects study video AI in criminology, medical skill assessment, dental education and online campaigns."
+    link: "mission/#research-objective-2-human-aligned-video-ai-for-uva"
+  - n: "Objective 03"
+    title: "Democratize human-aligned video-AI"
+    short: "We aim to make our methods accessible through workshops, tutorials, research summaries and video demonstrations."
+    link: "mission/#research-objective-3-democratize-human-aligned-video-ai"
 ---
 
 
 
-## Our Solution: Three Research Objectives
+## Three Research Objectives
 
-HAVA-Lab enables human-aligned video-AI by addressing three interconnected research objectives that form a continuous feedback loop: developing new alignment drives algorithmic development, and algorithmic development sheds new light on where alignment is most needed.
+HAVA-Lab connects research on human values with the development of algorithms that interpret video. Our first two objectives inform each other: work on cognition, ethics and law guides algorithm design, while testing algorithms in specific settings reveals further questions about alignment. Our third objective is to make these methods accessible to researchers across the UvA.
 
 ---
 
 ## Research Objective 1: Human Alignment in Video-AI
 
-The goal is to incorporate human-alignment during the development lifetime of video-AI algorithms from cognitive, ethical, and legal perspectives, each led by a PhD student.
+Three PhD projects examine how cognitive, ethical and legal considerations can shape video AI throughout its development, from the choice of training data to its use in practice.
 
 ### Cognitive Alignment
 
-Can video-AI become more computationally efficient by making it resemble the human brain? The rich perceptual content of video, with objects moving and activities unfolding in space-time, poses a much more challenging cognitive-alignment problem than work focusing on static images only. We expect dynamic adaptation and sparser network geometries to better approximate human efficiency.
+Can the way people process moving images help us build more efficient video AI? This project studies how models represent motion and activities over time. It investigates whether adapting computation to the input and using more sparsely connected networks can bring models closer to the efficiency of human perception.
 
 *Led by Dr. Iris Groen (FNWI)*
 
 ### Ethical Alignment
 
-How to embed ethical values better in video-AI algorithms? Based on the method of Jaton, we systematically record moments of 'hesitation' in the production of video-AI models to understand where genuine choices in the sense of pragmatic morality lie, how to represent these genuine choices in the video-AI algorithms, and how to develop new standards for labeling that include these choices.
+How do ethical choices enter the development of video AI? Drawing on Florian Jaton's work, this project examines moments when researchers question decisions about data, labels and models. It studies how these choices could be represented in algorithms and reflected in data labelling practices.
 
 *Led by Prof. dr. Tobias Blanke (FGw)*
 
 ### Legal Alignment
 
-This project considers video-AI compliance with fundamental rights and ethical values our European societies are based on. Can we incorporate privacy and legal standards of non-maleficence, equity, or justice by design? Can we develop human-aligned video-AI that accords with legal and regulatory concerns, while grounding legal and policy discussions in technical realities?
+How can video AI account for privacy, fundamental rights and legal requirements from the start? This project examines how principles such as avoiding harm, equity and justice can inform system design. It also brings knowledge of how video AI works into legal and policy discussions.
 
 *Led by Dr. mr. Heleen Janssen (FdR)*
 
@@ -38,29 +51,29 @@ This project considers video-AI compliance with fundamental rights and ethical v
 
 ## Research Objective 2: Human-Aligned Video-AI for UvA
 
-The goal is to develop video-AI with desired human alignment embedded and usable for the non-expert. We focus on four novel use cases directly relevant for research and education at UvA.
+Four PhD projects develop and evaluate video AI for research and teaching at the UvA. Each brings expertise from its field into algorithm development, with the aim of making the resulting methods usable by researchers who are not AI specialists.
 
 ### Criminal Behavior
 
-Video-AI has the potential to detect crime from camera recordings and provide insights into crime-types that are currently unregistered and unreported. However, specialist insights are still required to deal with human biases present in existing data. This requires developing insights into what can be used for detection and new video-AI algorithms recognizing crime without perpetuating unwanted biases.
+Can video analysis help researchers study incidents that are missing from crime reports and official records? This project combines criminology and computer vision to examine which behaviours can be identified in recordings and how bias enters the data and models. Legal and ethical expertise informs questions about surveillance and societal acceptance.
 
 *Led by Prof. dr. Marie Lindegaard (FMG)*
 
 ### Skill Assessment
 
-How can video-AI become more robust and safeguarded against annotation biases when it comes to real-world deployment, especially in medical settings when assessing skills? And how should video-AI algorithms be developed to be ethically sound in production when trained under skillslab conditions? We investigate the step from lab to real world for video-AI constrained by ethical constraints on fairness across all relevant dimensions.
+Can video AI assess medical skills reliably beyond a training lab? This project studies what changes when models trained on skills-lab recordings are used in clinical settings. It examines annotation bias, robustness and fairness in skill assessment.
 
 *Led by Prof. dr. Marlies Schijven (AUMC)*
 
 ### Diagnostic Training
 
-Diagnostic training is a critical aspect of dental education, as students often struggle with interpreting radiographs. To improve the quality and efficiency of diagnostic training, video-AI can play a crucial role. We research video-AI algorithms to compare learning strategies and provide insight into diagnostic failures by recognizing the student's behavior and gaze patterns during diagnostic assessment, creating more proficient future dentists.
+How do dental students learn to interpret radiographs, and where do they make mistakes? This project uses video AI to study students' behaviour and gaze during diagnostic assessment. It compares learning strategies to help inform dental teaching.
 
 *Led by Dr. Erwin Berkhout (ACTA)*
 
 ### Responsible Marketing
 
-A central theme in social media analysis is organized online campaigns, both political and economical. In such content, text and image recognition is common, yet videos are often ignored while being key when it comes to virality or synchronized campaigning. We investigate the role of videos in such social content and the development of video-AI algorithms for detecting when video content has viral potential through domain-specific guidance and alignment.
+What role does video play in organised political and commercial campaigns online? This project studies how videos spread and how they are used in coordinated campaigns. It develops methods to identify videos with the potential to go viral, guided by expertise in the campaigns and platforms being studied.
 
 *Led by Dr. Stevan Rudinac (FEE)*
 
@@ -68,18 +81,16 @@ A central theme in social media analysis is organized online campaigns, both pol
 
 ## Research Objective 3: Democratize Human-Aligned Video-AI
 
-Knowledge transfer of human-aligned video-AI happens at the DSC. We organize:
+We aim to help researchers across the UvA understand and use human-aligned video AI. The programme's planned activities at the DSC include:
 
-- A monthly **HAVA-Faculty-focus** where the research of one student is highlighted together with an invited speaker
-- Twice yearly **HAVA-workshops** with tutorials and hands-on notebooks to share human-aligned video-AI methodologies and practices
-- A yearly **HAVA-conference** to share our research and have round table discussions with the broad UvA community interested in human-aligned video-AI
+- A monthly **HAVA-Faculty-focus** session with a PhD researcher and an invited speaker
+- Two **HAVA-workshops** each year, with tutorials and notebooks for trying out the methods
+- An annual **HAVA-conference** for research presentations and discussions with the UvA community
 
 ---
 
-## Outcomes
+## Research Outputs
 
-The lab will culminate its outcomes into a virtual dashboard, where key findings are visualized, summarized in blogpost-style, and with technical advances handed out as easy-to-use notebooks. The dashboard will include video demonstrators showcasing qualitative outputs of research and visual summaries of proposed human alignment along the cognitive, ethical, and legal axes, as well as published research presented in short explainer videos made publicly available.
+We plan to publish research summaries, notebooks and video demonstrations in an online dashboard. Short explainer videos will introduce published work and illustrate cognitive, ethical and legal approaches to alignment.
 
-Besides publications and PhD theses, we expect to deliver the software and data that are part of each project.
-
-Publications aim for technical-AI venues like CVPR and NeurIPS, multi-disciplinary venues like ACM Multimedia and ACM FAccT, as well as discipline-specific venues relevant for each project.
+Expected outputs include papers, PhD theses, software and research datasets.

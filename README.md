@@ -8,15 +8,16 @@ Everything that changes regularly lives in a plain data file or a Markdown file.
 
 | What | Edit this file | Notes |
 | --- | --- | --- |
-| Meetups, talks, sessions | `data/events.yml` | One entry per event. `link` is the invite / registration / recap URL. Upcoming events show first on the home page. |
+| Meetups, talks, sessions | `data/events.yml` | One entry per event. The home page shows upcoming events; Publications & News also lists past events. |
 | Papers | `bibliography.bib` | Standard BibTeX. Optional `url`, `doi`, `arxiv`, `pdf` fields become link buttons. |
-| People and photos | `data/team.yml` | Drives the Team page and the photo roll on the home page. Photos go in `static/images/`. |
+| People and photos | `data/team.yml` | Drives the Team page. Photos go in `static/images/`. |
 | Media & visibility | `data/media.yml` | Press, talks, videos, events. Optional `image` thumbnail. |
+| Lab photo carousel | `data/gallery.yml` | Photos from `assets/images/lab/`, with captions, alt text and optional credits. Shown on Home and Media; Hugo creates responsive WebP images. |
 | Blog posts | `content/blog/*.md` | Copy `content/blog/example-post.md`, remove `draft: true`. |
 | News articles | `content/news/*.md` | Same format as blog posts. Listed under Publications & News and on the home page. |
-| Home page headline, ticker, objectives, stats | `content/_index.md` front matter | The body text below the front matter is the intro prose. |
-| Mission text | `content/mission/_index.md` | Plain Markdown. |
-| Nav, contact email, how many items the home page shows | `config.toml` | `pubsOnHome`, `eventsOnHome`. |
+| Home page headline and introduction | `content/_index.md` | Followed by the photo carousel, upcoming events and the three latest news items or DSC spotlights. |
+| Mission text and objective cards | `content/mission/_index.md` | Cards in the front matter link to the detailed research sections below. |
+| Nav, contact email, upcoming event limit | `config.toml` | `eventsOnHome` controls the maximum number shown on the home page. |
 
 ### Adding an event
 

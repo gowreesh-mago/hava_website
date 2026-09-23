@@ -4,22 +4,50 @@
 # Fields:
 #   title     required
 #   date      required, YYYY-MM-DD
-#   type      Press | Talk | Video | Event | Podcast | Award
+#   type      Spotlight | Press | Talk | Video | Event | Podcast | Award
 #   outlet    optional, where it appeared (e.g. "UvA Data Science Centre")
 #   summary   optional, one sentence
 #   link      optional, URL
 #   image     optional, path under static/, e.g. "images/opening.jpg"
+#   imageAlt  optional, description of the image
+
+- title: "DSC Member Spotlight: Dasha Simons"
+  date: "2026-09-01"
+  type: "Spotlight"
+  outlet: "UvA Data Science Centre"
+  summary: "Dasha discusses ethical questions in human-AI alignment and how different disciplines understand human preferences and values."
+  link: "https://dsc.uva.nl/content/news/2026/09/dsc-member-spotlight-dasha-simons.html"
+  image: "images/spotlights/dasha.jpg"
+  imageAlt: "Dasha Simons, photographed for the DSC Member Spotlight"
+
+- title: "DSC Member Spotlight: Gowreesh Mago"
+  date: "2026-04-07"
+  type: "Spotlight"
+  outlet: "UvA Data Science Centre"
+  summary: "Gowreesh discusses video understanding, abstract concepts in advertisements and his research on foundation models."
+  link: "https://dsc.uva.nl/content/news/2026/04/dsc-member-spotlight-gowreesh-mago.html"
+  image: "images/spotlights/gowreesh.jpg"
+  imageAlt: "Gowreesh Mago, photographed for the DSC Member Spotlight"
+
+- title: "DSC Member Spotlight: Swasti Mishra"
+  date: "2025-11-12"
+  type: "Spotlight"
+  outlet: "UvA Data Science Centre"
+  summary: "Swasti discusses AI for dental education and diagnostic training, and her work on medical image segmentation."
+  link: "https://dsc.uva.nl/content/news/2025/11/dsc-member-spotlight-swasti-mishra.html"
+  image: "images/spotlights/swasti.jpg"
+  imageAlt: "Swasti Mishra, photographed for the DSC Member Spotlight"
 
 - title: "Official opening of the HAVA-Lab by Peter-Paul Verbeek"
   date: "2024-10-16"
   type: "Event"
   outlet: "UvA Data Science Centre"
-  summary: "The HAVA-Lab was officially opened at the University Library Singel, celebrating the formal launch of the research programme."
+  summary: "Peter-Paul Verbeek opened HAVA-Lab at the University Library Singel on 16 October 2024."
   link: "news/2024-10-16-opening/"
 
 - title: "DSC Away Day recap"
   date: "2025-06-16"
   type: "Press"
   outlet: "UvA Data Science Centre"
-  summary: "Research highlights from HAVA-Lab presented at the DSC Away Day."
+  summary: "HAVA-Lab's PhD students organised a day of talks and workshops on human-aligned AI in video at the Eye Film Institute."
   link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"

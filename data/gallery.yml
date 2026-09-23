@@ -1,0 +1,62 @@
+# Images are stored under assets/ and resized by Hugo for the carousel.
+# Keep captions factual; add a credit and source link when available.
+
+- image: "images/lab/brain-video-poster.jpeg"
+  caption: "The human brain and video understanding"
+  context: "Poster presentation"
+  alt: "Two researchers beside a poster titled The Human Brain as a Dynamic Mixture of Expert Models in Video Understanding."
+
+- image: "images/lab/visual-sequences-poster.jpeg"
+  caption: "How video models represent visual sequences"
+  context: "Poster presentation"
+  alt: "A researcher beside a poster on the role of locality and temporal coherence in visual sequences."
+
+- image: "images/lab/hyperbolic-unet-poster.jpeg"
+  caption: "Hyperbolic U-Net for medical image segmentation"
+  context: "MIDL 2026 · Taipei"
+  alt: "A researcher presenting the Hyperbolic U-Net for Robust Medical Image Segmentation poster at MIDL 2026."
+
+- image: "images/lab/midl-2026-certificate.jpeg"
+  caption: "At MIDL 2026"
+  context: "Taipei"
+  alt: "A conference participant holding a certificate beside the MIDL 2026 sign in Taipei."
+
+- image: "images/lab/midl-2026-stage.jpeg"
+  caption: "On stage at MIDL 2026"
+  context: "Taipei"
+  alt: "Conference participants holding certificates on stage at Medical Imaging with Deep Learning 2026."
+
+- image: "images/lab/dsc-away-day-82.webp"
+  caption: "Workshop discussions"
+  context: "DSC Away Day · 16 June 2025"
+  alt: "Participants seated in a circle during a workshop at the DSC Away Day."
+  credit: "Benjamin Vanderveen"
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
+
+- image: "images/lab/dsc-away-day-66.webp"
+  caption: "Sharing ideas at the DSC Away Day"
+  context: "Eye Film Institute · 16 June 2025"
+  alt: "A workshop presenter speaking beside a slide headed Frame the Future."
+  credit: "Benjamin Vanderveen"
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
+
+- image: "images/lab/dsc-away-day-38.webp"
+  caption: "Conversations between sessions"
+  context: "DSC Away Day · 16 June 2025"
+  alt: "A small group of participants in conversation around a table at the Eye Film Institute."
+  credit: "Benjamin Vanderveen"
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
+
+- image: "images/lab/dsc-away-day-19.webp"
+  caption: "Listening to the talks"
+  context: "DSC Away Day · 16 June 2025"
+  alt: "Audience members listening to a talk at the DSC Away Day."
+  credit: "Benjamin Vanderveen"
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
+
+- image: "images/lab/dsc-away-day-21.webp"
+  caption: "Perspectives on video AI"
+  context: "DSC Away Day · 16 June 2025"
+  alt: "Participants seated in the audience during a DSC Away Day session."
+  credit: "Benjamin Vanderveen"
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"

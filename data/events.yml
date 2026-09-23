@@ -1,5 +1,5 @@
 # Meetups, talks and sessions. One entry per event, newest anywhere in the list
-# (the site sorts them). Upcoming events are shown first on the home page.
+# (the site sorts them). The home page shows upcoming events only.
 #
 # Fields:
 #   title        required
@@ -15,7 +15,7 @@
 - title: "DSC Away Day"
   date: "2025-06-16"
   kind: "Away day"
-  location: "UvA Data Science Centre"
-  description: "Research highlights from PhD student 1 presented together with an invited speaker."
+  location: "Eye Film Institute, Amsterdam"
+  description: "Organised by HAVA-Lab's PhD students, with a keynote, panel discussion and workshops on human-aligned AI in video."
   link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
   linkLabel: "Recap"

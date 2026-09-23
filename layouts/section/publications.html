@@ -17,13 +17,13 @@
     {{ range $papers }}{{ with .venue }}{{ $venues = $venues | append . }}{{ end }}{{ end }}
     {{ with uniq $venues }}
     <div class="side-block">
-      <div class="eyebrow">Venues on record</div>
+      <div class="eyebrow">Publication venues</div>
       <div class="tags">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
     </div>
     {{ end }}
     <div class="side-block">
-      <div class="eyebrow">Target venues</div>
-      <div class="tags"><span class="tag">CVPR</span><span class="tag">NeurIPS</span><span class="tag">ACM Multimedia</span><span class="tag">ACM FAccT</span><span class="tag">Discipline-specific</span></div>
+      <div class="eyebrow">Research areas</div>
+      <div class="tags"><span class="tag">Video AI</span><span class="tag">Cognition</span><span class="tag">Ethics</span><span class="tag">Law</span><span class="tag">Applications</span></div>
     </div>
   </aside>
 </div>
@@ -39,12 +39,12 @@
 <section class="section band-dark" id="events">
   <div class="section-head">
     <h2>News &amp; events</h2>
-    <span class="eyebrow section-head-meta"><span class="pulse">&#9679;</span> Faculty-focus · workshops · conference</span>
+    <span class="eyebrow section-head-meta"><span class="pulse">&#9679;</span> Talks · workshops · meetings</span>
   </div>
   {{ partial "events-list.html" (dict "ctx" . "variant" "dark") }}
   {{ if $news }}
   <div class="news-strip">
-    <div class="eyebrow">In the news</div>
+    <div class="eyebrow">Lab news</div>
     <div class="news-strip-items">
       {{ range $news.ByDate.Reverse }}
       <a class="news-strip-item" href="{{ .RelPermalink }}">

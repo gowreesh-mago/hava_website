@@ -1,0 +1,36 @@
+{{ $ctx := . }}
+{{ with .Site.Data.gallery }}
+{{ $photos := . }}
+<section class="team-roll photo-roll" id="lab-photos" data-photo-roll aria-labelledby="gallery-heading">
+  <div class="team-roll-head">
+    <span class="eyebrow" id="gallery-heading">Lab in pictures</span>
+    <div class="photo-roll-actions">
+      <button class="photo-roll-toggle eyebrow eyebrow--link" type="button" aria-controls="photo-roll-track" aria-pressed="false" aria-label="Pause photo carousel" hidden>Pause</button>
+      {{ if $ctx.IsHome }}<a class="eyebrow eyebrow--link" href="{{ "media/" | relURL }}">Media &amp; spotlights &rarr;</a>{{ end }}
+    </div>
+  </div>
+  <div class="team-roll-track photo-roll-track" id="photo-roll-track" tabindex="0" aria-label="Lab photographs">
+    {{ range $copy := seq 2 }}
+    <div class="team-roll-group photo-roll-group"{{ if eq $copy 2 }} aria-hidden="true" inert{{ end }}>
+      {{ range $photos }}
+      {{ $image := resources.Get .image }}
+      {{ if not $image }}{{ errorf "Gallery image not found: %s" .image }}{{ end }}
+      {{ $large := $image.Fit "1000x650 webp q85" }}
+      {{ $small := $image.Fit "500x325 webp q85" }}
+      <figure class="team-roll-item photo-roll-item" style="--photo-aspect: {{ div (float $image.Width) $image.Height }}">
+        <img src="{{ $large.RelPermalink }}"{{ if ne $small.Width $large.Width }} srcset="{{ $small.RelPermalink }} {{ $small.Width }}w, {{ $large.RelPermalink }} {{ $large.Width }}w" sizes="(max-width: 48rem) 340px, 440px"{{ end }} alt="{{ .alt }}" width="{{ $large.Width }}" height="{{ $large.Height }}" loading="lazy" decoding="async">
+        <figcaption>
+          <span class="photo-roll-caption">{{ .caption }}</span>
+          <span>{{ .context }}</span>
+          {{ with .credit }}<span>Photo: {{ . }}</span>{{ end }}
+          {{ with .link }}<a class="photo-roll-report" href="{{ . }}" target="_blank" rel="noopener"{{ if eq $copy 2 }} tabindex="-1"{{ end }}>Event report &rarr;</a>{{ end }}
+        </figcaption>
+      </figure>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ $script := resources.Get "js/gallery.js" | minify }}
+<script src="{{ $script.RelPermalink }}" defer></script>
+{{ end }}

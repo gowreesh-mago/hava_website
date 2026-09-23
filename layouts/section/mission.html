@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ partial "page-hero.html" . }}
+{{ with .Params.objectives }}
+<section class="objectives" aria-label="Research objectives">
+  {{ range . }}
+  <a class="objective" href="{{ .link | relURL }}">
+    <div class="eyebrow">{{ .n }}</div>
+    <h3>{{ .title }}</h3>
+    <p>{{ .short }}</p>
+  </a>
+  {{ end }}
+</section>
+{{ end }}
+<article class="prose">
+  {{ .Content }}
+</article>
+{{ end }}

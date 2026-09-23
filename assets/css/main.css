@@ -475,6 +475,29 @@ main > .empty-state { padding: 1.5rem var(--gutter) 3rem; }
 .visibility-card h3 a { border-bottom: 1px solid var(--red); }
 .visibility-card p { font-family: var(--font-serif); font-size: 0.975rem; line-height: 1.45; color: rgba(244, 242, 237, 0.72); }
 
+/* ---------- lab photographs ---------- */
+.photo-roll { --photo-height: 18rem; scroll-margin-top: 5rem; }
+.photo-roll .team-roll-head { align-items: center; flex-wrap: wrap; gap: 1rem; }
+.photo-roll-actions { display: flex; align-items: center; gap: 1.5rem; }
+.photo-roll-toggle { border: 0; background: none; cursor: pointer; padding: 0.4rem 0; }
+.photo-roll-toggle[hidden] { display: none; }
+.photo-roll-toggle:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+.photo-roll-track { animation: marquee 100s linear infinite; }
+.photo-roll .photo-roll-group { flex: none; animation: none; }
+.photo-roll-track:focus-within, .photo-roll.is-paused .photo-roll-track { animation-play-state: paused; }
+.photo-roll-item { width: calc(var(--photo-height) * var(--photo-aspect)); }
+.photo-roll-item img { width: 100%; height: var(--photo-height); object-fit: contain; }
+.photo-roll-item figcaption { display: flex; flex-direction: column; gap: 0.3rem; padding: 0 0.5rem; }
+.photo-roll-caption { color: var(--ink); }
+.photo-roll-report { color: var(--red); }
+@media (max-width: 48rem) {
+  .photo-roll { --photo-height: 14rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-roll-track { animation: none; width: 100%; overflow-x: auto; }
+  .photo-roll-group[aria-hidden="true"], .photo-roll-toggle { display: none; }
+}
+
 /* ---------- footer ---------- */
 .site-footer { background: var(--ink); color: var(--on-dark); padding: 2.75rem var(--gutter) 1.75rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.25rem; padding-bottom: 1.75rem; border-bottom: 1px solid rgba(244, 242, 237, 0.18); }

@@ -1,7 +1,11 @@
 {{ define "main" }}
-{{ $data := index .Site.Data "scholar-papers" }}
-{{ $papers := slice }}{{ with $data }}{{ $papers = .papers }}{{ end }}
-{{ $news := where .Site.RegularPages "Section" "news" }}
+{{ $news := slice }}
+{{ range where .Site.RegularPages "Section" "news" }}
+  {{ $news = $news | append (dict "title" .Title "date" .Date "link" .RelPermalink "external" false) }}
+{{ end }}
+{{ range where .Site.Data.media "type" "Spotlight" }}
+  {{ $news = $news | append (dict "title" .title "date" (time .date) "link" .link "external" true) }}
+{{ end }}
 
 <section class="hero">
   <div class="hero-copy">
@@ -11,8 +15,8 @@
     <h1>{{ .Params.headline | default .Title }}</h1>
     <div class="hero-prose">{{ .Content }}</div>
     <div class="hero-actions">
-      <a class="btn btn--solid" href="{{ "publications/" | relURL }}">Publications &rarr;</a>
-      <a class="btn btn--outline" href="{{ "publications/#events" | relURL }}">Next sessions</a>
+      <a class="btn btn--solid" href="{{ "mission/" | relURL }}">Our research &rarr;</a>
+      <a class="btn btn--outline" href="#meetups">Upcoming events</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -21,80 +25,26 @@
       <span class="red">חוה</span>
     </div>
     {{ partial "loom.html" . }}
-    <span class="hero-visual-note">Three alignment axes woven through four use cases</span>
+    <span class="hero-visual-note">Cognitive, ethical and legal alignment across four applications</span>
   </div>
 </section>
 
-{{ with .Params.ticker }}
-{{ $items := . }}
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    {{ range seq 2 }}{{ range $items }}<span><i>/</i>{{ . }}</span>{{ end }}{{ end }}
-  </div>
-</div>
-{{ end }}
-
-{{ partial "team-roll.html" . }}
-
-<section class="home-news" id="news">
-  <div class="home-news-col home-news-pubs">
-    <div class="section-head">
-      <h2>Latest publications</h2>
-      <a class="eyebrow eyebrow--link" href="{{ "publications/" | relURL }}">Full record &rarr;</a>
-    </div>
-    {{ partial "scholar-papers.html" (dict "ctx" . "limit" .Site.Params.pubsOnHome) }}
-  </div>
-  <aside class="home-news-col home-news-side">
-    {{ if $papers }}
-    {{ $years := dict }}
-    {{ range $papers }}{{ if gt .year 0 }}{{ $y := printf "%d" (int .year) }}{{ $years = merge $years (dict $y (add (index $years $y | default 0) 1)) }}{{ end }}{{ end }}
-    {{ $max := 1 }}{{ range $years }}{{ if gt . $max }}{{ $max = . }}{{ end }}{{ end }}
-    <div class="side-block">
-      <div class="eyebrow">Output by year</div>
-      <div class="bars">
-        {{ range $y, $n := $years }}
-        <div class="bar">
-          <div class="bar-fill" style="height:{{ div (mul $n 100) $max }}%"><span>{{ $n }}</span></div>
-          <div class="bar-label">{{ $y }}</div>
-        </div>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }}
-    <div class="side-block">
-      <div class="eyebrow">Latest from the blog</div>
-      {{ $posts := first 3 (where .Site.RegularPages "Section" "blog") }}
-      {{ if $posts }}
-      <ul class="mini-list">
-        {{ range $posts }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="mono">{{ .Date.Format "02 Jan 2006" }}</span></li>
-        {{ end }}
-      </ul>
-      {{ else }}
-      <p class="empty-state">First posts are on their way.</p>
-      {{ end }}
-      <a class="eyebrow eyebrow--link" href="{{ "blog/" | relURL }}">All posts &rarr;</a>
-    </div>
-  </aside>
-</section>
+{{ partial "gallery.html" . }}
 
 <section class="home-events band-dark" id="meetups">
   <div class="section-head">
-    <h2>Meetups &amp; sessions</h2>
-    <div class="eyebrow section-head-meta">
-      <span class="pulse">&#9679;</span><span>Faculty-focus · workshops · conference</span>
-      <a class="eyebrow--link" href="{{ "publications/#events" | relURL }}">All &rarr;</a>
-    </div>
+    <h2>Upcoming events</h2>
+    <a class="eyebrow eyebrow--link" href="{{ "publications/#events" | relURL }}">All events &rarr;</a>
   </div>
-  {{ partial "events-list.html" (dict "ctx" . "limit" .Site.Params.eventsOnHome "variant" "dark") }}
+  {{ partial "events-list.html" (dict "ctx" . "limit" .Site.Params.eventsOnHome "variant" "dark" "upcomingOnly" true) }}
   {{ if $news }}
-  <div class="news-strip">
-    <div class="eyebrow">In the news</div>
+  <div class="news-strip" id="news">
+    <div class="eyebrow">News</div>
     <div class="news-strip-items">
-      {{ range first 3 $news.ByDate.Reverse }}
-      <a class="news-strip-item" href="{{ .RelPermalink }}">
-        <span class="mono">{{ .Date.Format "02 Jan 2006" }}</span>
-        <span>{{ .Title }}</span>
+      {{ range first 3 (sort $news "date" "desc") }}
+      <a class="news-strip-item" href="{{ .link }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>
+        <span class="mono">{{ .date.Format "02 Jan 2006" }}</span>
+        <span>{{ .title }}</span>
       </a>
       {{ end }}
     </div>
@@ -102,26 +52,4 @@
   {{ end }}
 </section>
 
-{{ with .Params.objectives }}
-<section class="objectives">
-  {{ range . }}
-  <a class="objective" href="{{ .link | relURL }}">
-    <div class="eyebrow">{{ .n }}</div>
-    <h3>{{ .title }}</h3>
-    <p>{{ .short }}</p>
-  </a>
-  {{ end }}
-</section>
-{{ end }}
-
-{{ with .Params.stats }}
-<section class="stats">
-  {{ range . }}
-  <div class="stat">
-    <div class="stat-n">{{ .n }}</div>
-    <div class="eyebrow">{{ .label }}</div>
-  </div>
-  {{ end }}
-</section>
-{{ end }}
 {{ end }}

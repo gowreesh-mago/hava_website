@@ -5,7 +5,7 @@
 {{ $items := sort .Site.Data.media "date" "desc" }}
 <section class="section" id="media">
   <div class="section-head">
-    <h2>In the media</h2>
+    <h2>Coverage &amp; reports</h2>
     <span class="eyebrow">{{ len $items }} item{{ if ne (len $items) 1 }}s{{ end }}</span>
   </div>
   {{ if $items }}
@@ -13,7 +13,7 @@
     {{ range $items }}
     {{ $href := "" }}{{ with .link }}{{ $href = cond (hasPrefix . "http") . (relURL .) }}{{ end }}
     <article class="media-row">
-      {{ with .image }}<img class="media-thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
+      {{ if .image }}<img class="media-thumb" src="{{ .image | relURL }}" alt="{{ .imageAlt | default "" }}" loading="lazy" decoding="async">{{ end }}
       <div class="media-body">
         <div class="eyebrow"><span class="red">{{ .type }}</span>{{ with .outlet }}<span class="muted">{{ . }}</span>{{ end }}<span class="muted">{{ dateFormat "02 Jan 2006" .date }}</span></div>
         <h3>{{ if $href }}<a href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
@@ -24,12 +24,14 @@
     {{ end }}
   </div>
   {{ else }}
-  <p class="empty-state">Nothing listed yet. Add items to <code>data/media.yml</code>.</p>
+  <p class="empty-state">No media coverage listed yet.</p>
   {{ end }}
 </section>
 
+{{ partial "gallery.html" . }}
+
 <section class="section band-dark" id="visibility">
-  <div class="section-head"><h2>Visibility</h2><span class="eyebrow">Where to find the lab</span></div>
+  <div class="section-head"><h2>Contact &amp; visits</h2><span class="eyebrow">Where to find the lab</span></div>
   <div class="visibility">
     <div class="visibility-card">
       <div class="eyebrow">Host</div>
@@ -39,7 +41,7 @@
     <div class="visibility-card">
       <div class="eyebrow">Location</div>
       <h3>{{ .Site.Params.location }}</h3>
-      <p>The shared lab space where the PhD cohort works together.</p>
+      <p>Contact us to arrange a visit to the lab.</p>
     </div>
     <div class="visibility-card">
       <div class="eyebrow">Press &amp; invitations</div>
@@ -47,9 +49,9 @@
       <p>For interviews, talks and collaborations, contact the lead principal investigator.</p>
     </div>
     <div class="visibility-card">
-      <div class="eyebrow">Sessions</div>
-      <h3><a href="{{ "publications/#events" | relURL }}">Meetups &amp; sessions</a></h3>
-      <p>Monthly faculty-focus, two workshops a year and a yearly HAVA-conference open to the UvA community.</p>
+      <div class="eyebrow">Events</div>
+      <h3><a href="{{ "publications/#events" | relURL }}">Lab events</a></h3>
+      <p>See event details and read reports from past meetings and workshops.</p>
     </div>
   </div>
 </section>

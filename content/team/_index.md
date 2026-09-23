@@ -1,7 +1,7 @@
 ---
 title: "Team & PhD Programme"
 eyebrow: "People"
-description: "Meet the interdisciplinary team and PhD students behind HAVA-Lab, spanning all seven UvA faculties."
+description: "Researchers from all seven UvA faculties work together on seven PhD projects in human-aligned video AI."
 stats:
   - n: "7"
     label: "Faculties"
@@ -11,4 +11,4 @@ stats:
     label: "Principal Investigators"
 ---
 
-The HAVA-Lab team is highly multi-disciplinary, with coverage of expertise from all seven UvA faculties. The diversity of the team includes balance in gender, nationalities, and career-stages, which we deem advantageous for hiring a similarly diverse pool of interdisciplinary PhD students.
+Each PhD project pairs a supervisor with expertise in the relevant field with a supervisor in video AI. The programme combines a shared research space at the DSC with supervision in the VIS Lab and participating faculty groups.

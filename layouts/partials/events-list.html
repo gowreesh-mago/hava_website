@@ -2,6 +2,7 @@
   Events list from data/events.yml.
   Call with (dict "ctx" . "limit" N "variant" "dark"|"light").
   Upcoming events first (soonest first), then past events (most recent first).
+  Set "upcomingOnly" true to exclude past events on the home page.
 */}}
 {{ $limit := .limit | default 0 }}
 {{ $variant := .variant | default "light" }}
@@ -13,7 +14,8 @@
   {{ $e := merge . (dict "iso" $d) }}
   {{ if ge $d $today }}{{ $upcoming = $upcoming | append $e }}{{ else }}{{ $past = $past | append $e }}{{ end }}
 {{ end }}
-{{ $events := sort $upcoming "iso" "asc" | append (sort $past "iso" "desc") }}
+{{ $events := sort $upcoming "iso" "asc" }}
+{{ if not .upcomingOnly }}{{ $events = $events | append (sort $past "iso" "desc") }}{{ end }}
 {{ if gt $limit 0 }}{{ $events = first $limit $events }}{{ end }}
 
 {{ if $events }}
@@ -48,5 +50,5 @@
   {{ end }}
 </div>
 {{ else }}
-<p class="empty-state">No events scheduled yet. Add one to <code>data/events.yml</code>.</p>
+<p class="empty-state">{{ if .upcomingOnly }}No upcoming events are listed.{{ else }}No events listed yet.{{ end }}</p>
 {{ end }}
