@@ -7,6 +7,7 @@
 {{ with $data }}{{ $papers = .papers }}{{ end }}
 {{ $limit := .limit | default 0 }}
 {{ if gt $limit 0 }}{{ $papers = first $limit $papers }}{{ end }}
+{{ $blogPosts := where .ctx.Site.RegularPages "Section" "blog" }}
 
 {{ if $papers }}
 <div class="pubs" id="pub-list">
@@ -31,6 +32,7 @@
       {{ with $p.arxiv }}<a class="chip" href="https://arxiv.org/abs/{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
       {{ with $p.url }}<a class="chip" href="{{ . }}" target="_blank" rel="noopener">Link</a>{{ end }}
       {{ if not (or $p.pdf $p.doi $p.arxiv $p.url) }}<a class="chip" href="{{ $search }}" target="_blank" rel="noopener">Scholar</a>{{ end }}
+      {{ range where $blogPosts "Params.publication" $p.id }}<a class="chip" href="{{ .RelPermalink }}">Blog post</a>{{ end }}
     </div>
   </article>
   {{ end }}

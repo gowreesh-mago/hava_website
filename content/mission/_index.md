@@ -69,13 +69,13 @@ Can video AI assess medical skills reliably beyond a training lab? This project 
 
 How do dental students learn to interpret radiographs, and where do they make mistakes? This project uses video AI to study students' behaviour and gaze during diagnostic assessment. It compares learning strategies to help inform dental teaching.
 
-*Led by Dr. Erwin Berkhout (ACTA)*
+*Led by Prof. dr. Erwin Berkhout (ACTA)*
 
 ### Responsible Marketing
 
 What role does video play in organised political and commercial campaigns online? This project studies how videos spread and how they are used in coordinated campaigns. It develops methods to identify videos with the potential to go viral, guided by expertise in the campaigns and platforms being studied.
 
-*Led by Dr. Stevan Rudinac (FEE)*
+*Led by Prof. dr. Stevan Rudinac (FEE)*
 
 ---
 

@@ -13,7 +13,7 @@ Everything that changes regularly lives in a plain data file or a Markdown file.
 | People and photos | `data/team.yml` | Drives the Team page. Photos go in `static/images/`. |
 | Media & visibility | `data/media.yml` | Press, talks, videos, events. Optional `image` thumbnail. |
 | Lab photo carousel | `data/gallery.yml` | Photos from `assets/images/lab/`, with captions, alt text and optional credits. Shown on Home in a shuffled order on each visit; Hugo creates responsive WebP images. |
-| Blog posts | `content/blog/*.md` | Copy `content/blog/example-post.md`, remove `draft: true`. |
+| Blog posts | `content/blog/` | Copy `content/blog/example-post.md`, remove `draft: true`. Use a folder with `index.md` for a post with its own images. An optional `publication` field matching a BibTeX entry ID adds a Blog post link beside that paper. |
 | News articles | `content/news/*.md` | Same format as blog posts. Listed under Publications & News and on the home page. |
 | Home page headline and introduction | `content/_index.md` | Followed by the photo carousel, upcoming events and the three latest news items or DSC spotlights. |
 | Mission text and objective cards | `content/mission/_index.md` | Cards in the front matter link to the detailed research sections below. |
