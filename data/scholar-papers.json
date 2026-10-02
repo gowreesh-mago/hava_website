@@ -1,6 +1,19 @@
 {
-  "lastUpdated": "2026-09-17T13:15:17.251Z",
+  "lastUpdated": "2026-10-02T10:38:39.689Z",
   "papers": [
+    {
+      "id": "simons2026hci",
+      "title": "HCI's Emerging Roles in Shaping Alignment Discretion",
+      "authors": [
+        "Dasha Simons"
+      ],
+      "year": 2026,
+      "venue": "CHI 2026 Workshop on Bidirectional Human-AI Alignment (BiAlign)",
+      "doi": "",
+      "arxiv": "",
+      "url": "https://bialign-workshop.github.io/2026/papers",
+      "pdf": ""
+    },
     {
       "id": "mishra2026hyperbolic",
       "title": "Hyperbolic u-net for robust medical image segmentation",

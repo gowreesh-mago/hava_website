@@ -39,7 +39,7 @@ Can the way people process moving images help us build more efficient video AI? 
 
 How do ethical choices enter the development of video AI? Drawing on Florian Jaton's work, this project examines moments when researchers question decisions about data, labels and models. It studies how these choices could be represented in algorithms and reflected in data labelling practices.
 
-*Led by Prof. dr. Tobias Blanke (FGw)*
+*Led by Prof. dr. Tobias Blanke (FGw) and Prof. dr. Paula Helm (FGw)*
 
 ### Legal Alignment
 
