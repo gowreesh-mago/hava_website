@@ -1,17 +1,22 @@
+{{ define "page-styles" }}
+{{ $css := resources.Get "css/mission.css" | minify }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+
 {{ define "main" }}
+<div class="mission-page">
 {{ partial "page-hero.html" . }}
 {{ with .Params.objectives }}
-<section class="objectives" aria-label="Research objectives">
-  {{ range . }}
-  <a class="objective" href="{{ .link | relURL }}">
-    <div class="eyebrow">{{ .n }}</div>
-    <h3>{{ .title }}</h3>
-    <p>{{ .short }}</p>
-  </a>
-  {{ end }}
-</section>
+<nav class="mission-objectives" aria-label="Research objectives">
+  <ul>
+    {{ range . }}
+    <li><a href="{{ .link | relURL }}">{{ .title }}</a></li>
+    {{ end }}
+  </ul>
+</nav>
 {{ end }}
 <article class="prose">
   {{ .Content }}
 </article>
+</div>
 {{ end }}
