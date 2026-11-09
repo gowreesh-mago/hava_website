@@ -340,7 +340,6 @@ a.lw-index-row { text-decoration: none; }
   background: var(--affil); color: var(--affil-text, var(--on-dark));
   font-family: var(--font-mono); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.04em;
 }
-@media (max-width: 64rem) { @media (max-width: 40rem) { 
 /* ---------- publications ---------- */
 .pubs { border-top: 1px solid var(--ink); }
 .pub-year-group { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 0 2rem; border-bottom: 1px solid var(--ink); }
