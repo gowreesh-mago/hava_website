@@ -1,0 +1,9 @@
+{{/* Compact ruled row for an outreach item: date · type · title. Call with (dict "item" . "state" "Upcoming"|""). */}}
+{{ $i := .item }}
+{{ $href := "" }}{{ with $i.link }}{{ $href = cond (hasPrefix . "http") . (relURL .) }}{{ end }}
+{{ $ext := hasPrefix $href "http" }}
+<a class="index-row{{ if .state }} is-upcoming{{ end }}" href="{{ $href | default ("outreach/" | relURL) }}"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>
+  <time class="index-row-date" datetime="{{ $i.date }}">{{ with $i.date }}{{ dateFormat "02 Jan 2006" . }}{{ end }}</time>
+  <span class="index-row-type">{{ with .state }}{{ . }}{{ else }}{{ $i.type }}{{ end }}</span>
+  <span class="index-row-title">{{ $i.title }}{{ if $ext }}<span class="ext" aria-label="(external link)"> &nearr;</span>{{ end }}</span>
+</a>

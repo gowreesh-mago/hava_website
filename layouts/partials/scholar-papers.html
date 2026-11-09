@@ -1,40 +1,43 @@
 {{/*
-  Publication list from data/scholar-papers.json (generated from bibliography.bib).
-  Call with (dict "ctx" . "limit" N "start" N).
+  Publication list from data/scholar-papers.json (generated from bibliography.bib),
+  grouped by year, newest first. Titles link to the PDF when one is listed.
 */}}
 {{ $data := index .ctx.Site.Data "scholar-papers" }}
-{{ $papers := slice }}
-{{ with $data }}{{ $papers = .papers }}{{ end }}
-{{ $limit := .limit | default 0 }}
-{{ if gt $limit 0 }}{{ $papers = first $limit $papers }}{{ end }}
-{{ $blogPosts := where .ctx.Site.RegularPages "Section" "blog" }}
+{{ $papers := slice }}{{ with $data }}{{ $papers = .papers }}{{ end }}
+{{ $years := slice }}
+{{ range $papers }}{{ if gt .year 0 }}{{ $years = $years | append (int .year) }}{{ end }}{{ end }}
+{{ $groups := slice }}
+{{ range sort (uniq $years) "value" "desc" }}{{ $y := . }}
+  {{ $groups = $groups | append (dict "label" (string $y) "papers" (where $papers "year" "eq" $y)) }}
+{{ end }}
+{{ with where $papers "year" "le" 0 }}{{ errorf "Every publication needs a verified publication year" }}{{ end }}
 
 {{ if $papers }}
 <div class="pubs" id="pub-list">
-  {{ range $i, $p := $papers }}
-  {{ $search := printf "https://scholar.google.com/scholar?q=%s" (querify "q" $p.title | strings.TrimPrefix "q=") }}
-  {{ $main := or $p.url $p.pdf (cond (ne $p.doi "") (printf "https://doi.org/%s" $p.doi) "") (cond (ne $p.arxiv "") (printf "https://arxiv.org/abs/%s" $p.arxiv) "") $search }}
-  <article class="pub-row" data-search="{{ lower (printf "%s %s %s %v" $p.title (delimit $p.authors " ") $p.venue $p.year) }}">
-    <span class="pub-n">{{ printf "%02d" (add $i 1) }}</span>
-    <div class="pub-body">
-      <h3 class="pub-title"><a href="{{ $main }}" target="_blank" rel="noopener">{{ $p.title }}</a></h3>
-      <div class="pub-meta">
-        {{ if $p.authors }}<span class="pub-authors">{{ delimit $p.authors ", " }}</span>{{ end }}
+  {{ range $groups }}
+  <section class="pub-year-group" aria-labelledby="year-{{ .label }}">
+    <h2 class="pub-year" id="year-{{ .label }}">{{ .label }}</h2>
+    <div class="pub-year-list">
+    {{ range sort .papers "title" }}{{ $p := . }}
+    {{ $search := printf "https://scholar.google.com/scholar?%s" (querify "q" $p.title) }}
+    {{ $main := or $p.pdf $p.url (cond (ne $p.doi "") (printf "https://doi.org/%s" $p.doi) "") (cond (ne $p.arxiv "") (printf "https://arxiv.org/abs/%s" $p.arxiv) "") $search }}
+    <article class="pub-row">
+      <div class="pub-body">
+        <h3 class="pub-title"><a href="{{ $main }}" target="_blank" rel="noopener">{{ $p.title }}</a></h3>
+        {{ with $p.authors }}<p class="pub-authors">{{ delimit . ", " }}</p>{{ end }}
+        {{ with $p.venue }}<p class="pub-venue">{{ . }}</p>{{ end }}
       </div>
-      <div class="pub-meta pub-meta--venue">
-        {{ with $p.venue }}<span class="pub-venue">{{ . }}</span>{{ end }}
-        {{ if gt $p.year 0 }}<span class="pub-year">{{ $p.year }}</span>{{ end }}
+      <div class="pub-links">
+        {{ with $p.pdf }}<a class="chip" href="{{ . }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+        {{ with $p.doi }}<a class="chip" href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}
+        {{ with $p.arxiv }}<a class="chip" href="https://arxiv.org/abs/{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
+        {{ if and $p.url (ne $p.url $p.pdf) }}<a class="chip" href="{{ $p.url }}" target="_blank" rel="noopener">Link</a>{{ end }}
+        {{ if not (or $p.pdf $p.doi $p.arxiv $p.url) }}<a class="chip" href="{{ $search }}" target="_blank" rel="noopener">Scholar</a>{{ end }}
       </div>
+    </article>
+    {{ end }}
     </div>
-    <div class="pub-links">
-      {{ with $p.pdf }}<a class="chip chip--solid" href="{{ . }}" target="_blank" rel="noopener">PDF</a>{{ end }}
-      {{ with $p.doi }}<a class="chip" href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}
-      {{ with $p.arxiv }}<a class="chip" href="https://arxiv.org/abs/{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
-      {{ with $p.url }}<a class="chip" href="{{ . }}" target="_blank" rel="noopener">Link</a>{{ end }}
-      {{ if not (or $p.pdf $p.doi $p.arxiv $p.url) }}<a class="chip" href="{{ $search }}" target="_blank" rel="noopener">Scholar</a>{{ end }}
-      {{ range where $blogPosts "Params.publication" $p.id }}<a class="chip" href="{{ .RelPermalink }}">Blog post</a>{{ end }}
-    </div>
-  </article>
+  </section>
   {{ end }}
 </div>
 {{ else }}

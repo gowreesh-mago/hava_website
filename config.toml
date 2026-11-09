@@ -1,15 +1,15 @@
 baseURL = "https://gowreesh-mago.github.io/hava_website/"
 languageCode = "en"
+timeZone = "Europe/Amsterdam"
 title = "HAVA-Lab"
 disableKinds = ["RSS", "taxonomy", "term"]
 
 [params]
-  description = "Human-Aligned Video AI Laboratory - UvA Data Science Centre"
-  ogImage = "/media/og-image.jpg"
-  location = "University Library Singel, Amsterdam"
-  contactEmail = "c.g.m.snoek@uva.nl"
-  # Maximum number of upcoming events on the home page
-  eventsOnHome = 4
+  description = "HAVA is one of the DSC lighthouse projects at the UvA, spanning 7 faculties."
+  ogImage = "media/uva-dsc.jpg"
+  location = "University Library, Amsterdam"
+  # Latest outreach items shown on the home page
+  outreachOnHome = 4
 
 [menu]
   [[menu.main]]
@@ -17,25 +17,21 @@ disableKinds = ["RSS", "taxonomy", "term"]
     pageRef = "/"
     weight = 1
   [[menu.main]]
-    name = "Mission"
-    pageRef = "/mission"
+    name = "Projects"
+    pageRef = "/projects"
     weight = 2
   [[menu.main]]
     name = "Team"
     pageRef = "/team"
     weight = 3
   [[menu.main]]
-    name = "Publications & News"
+    name = "Publications"
     pageRef = "/publications"
     weight = 4
   [[menu.main]]
-    name = "Blog"
-    pageRef = "/blog"
+    name = "Outreach"
+    pageRef = "/outreach"
     weight = 5
-  [[menu.main]]
-    name = "Media"
-    pageRef = "/media"
-    weight = 6
 
 [markup]
   [markup.goldmark]

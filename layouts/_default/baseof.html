@@ -33,5 +33,12 @@
     }
   })();
   </script>
+<script>
+/* web fonts reflow the page after the initial #anchor jump; land on the target again once they're in */
+if (location.hash && document.fonts) document.fonts.ready.then(function(){
+  var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (t) t.scrollIntoView({ behavior: 'instant', block: 'start' });
+});
+</script>
 </body>
 </html>

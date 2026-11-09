@@ -1,12 +1,14 @@
 <header class="site-header" role="banner">
-  <a href="{{ .Site.Home.RelPermalink }}" class="site-title">
-    <span class="wordmark">HAVA</span>
-    <span class="tagline">Human-Aligned Video AI · UvA Data Science Centre</span>
-  </a>
+  <div class="site-brand">
+    <a href="{{ .Site.Home.RelPermalink }}" class="site-title"><span class="wordmark">HAVA</span></a>
+    <a class="site-logo" href="https://dsc.uva.nl/" target="_blank" rel="noopener">
+      <img src="{{ "media/uva-dsc.jpg" | relURL }}" alt="University of Amsterdam, Data Science Centre" width="700" height="79">
+    </a>
+  </div>
   <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
   <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
     {{ range .Site.Menus.main }}
-    <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    <a href="{{ .URL }}"{{ if eq $.RelPermalink .Page.RelPermalink }} aria-current="page"{{ end }}>{{ .Name }}</a>
     {{ end }}
   </nav>
 </header>

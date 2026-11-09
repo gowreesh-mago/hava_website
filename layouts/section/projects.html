@@ -1,0 +1,14 @@
+{{ define "page-styles" }}
+{{ $css := resources.Get "css/projects.css" | minify }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="projects-page">
+{{ partial "page-hero.html" . }}
+
+<article class="prose">
+  {{ .Content }}
+</article>
+</div>
+{{ end }}

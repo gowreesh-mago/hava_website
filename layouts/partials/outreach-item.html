@@ -1,0 +1,19 @@
+{{/* One outreach record: date column · body (meta, title, summary, media) · link. */}}
+{{ $href := "" }}{{ with .link }}{{ $href = cond (hasPrefix . "http") . (relURL .) }}{{ end }}
+{{ $ext := hasPrefix $href "http" }}
+<article class="media-row"{{ with .date }} data-event-date="{{ . }}"{{ end }}>
+  <div class="media-date">
+    {{ with .date }}<time datetime="{{ . }}"><span class="media-day">{{ dateFormat "02" . }}</span><span class="media-month">{{ dateFormat "Jan 2006" . }}</span></time>{{ else }}<span class="media-month">Ongoing</span>{{ end }}
+  </div>
+  <div class="media-body">
+    <div class="eyebrow"><span class="red">{{ .type }}</span>{{ with .outlet }}<span>{{ . }}</span>{{ end }}</div>
+    <h3>{{ if $href }}<a href="{{ $href }}"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
+    {{ with .summary }}<p>{{ . }}</p>{{ end }}
+    {{ with .presenters }}<ul class="event-presenters">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+    {{ with .location }}<p class="media-where mono">{{ . }}</p>{{ end }}
+  </div>
+  <div class="media-aside">
+    {{ if $href }}<a class="media-link eyebrow eyebrow--link" href="{{ $href }}"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>{{ .linkLabel | default "Open" }} {{ if $ext }}&nearr;{{ else }}&rarr;{{ end }}</a>{{ end }}
+    {{ if .image }}<figure class="media-figure"><img class="media-thumb" src="{{ .image | relURL }}" alt="{{ .imageAlt | default "" }}" loading="lazy" decoding="async">{{ with .imageCredit }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>{{ end }}
+  </div>
+</article>

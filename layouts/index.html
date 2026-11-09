@@ -1,13 +1,7 @@
 {{ define "main" }}
-{{ $news := slice }}
-{{ range where .Site.RegularPages "Section" "news" }}
-  {{ $news = $news | append (dict "title" .Title "date" .Date "link" .RelPermalink "external" false) }}
-{{ end }}
-{{ range where .Site.Data.media "type" "Spotlight" }}
-  {{ $news = $news | append (dict "title" .title "date" (time .date) "link" .link "external" true) }}
-{{ end }}
+{{ $groups := partial "outreach-groups.html" . }}
 
-<section class="hero">
+<section class="hero hero--overview">
   <div class="hero-copy">
     {{ with .Params.eyebrow }}
     <div class="eyebrow eyebrow--red hero-eyebrow">{{ range $i, $e := . }}<span{{ if $i }} class="muted"{{ end }}>{{ $e }}</span>{{ end }}</div>
@@ -15,41 +9,47 @@
     <h1>{{ .Params.headline | default .Title }}</h1>
     <div class="hero-prose">{{ .Content }}</div>
     <div class="hero-actions">
-      <a class="btn btn--solid" href="{{ "mission/" | relURL }}">Our research &rarr;</a>
-      <a class="btn btn--outline" href="#meetups">Upcoming events</a>
+      <a class="btn btn--solid" href="{{ "projects/" | relURL }}">The seven projects &rarr;</a>
+      <a class="text-link" href="#outreach">Upcoming events &rarr;</a>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-visual-head">
-      <span>{{ .Params.subtitle }}</span>
-      <span class="red">חוה</span>
+  {{ with index (where .Site.Data.outreach "vimeo" "ne" nil) 0 }}
+  <figure class="hero-video">
+    <div class="video-embed">
+      <iframe src="https://player.vimeo.com/video/{{ replace .vimeo "/" "?h=" }}" title="{{ .title }}" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
-    {{ partial "loom.html" . }}
-    <span class="hero-visual-note">Cognitive, ethical and legal alignment across four applications</span>
+    <figcaption class="mono">{{ .title }} · {{ dateFormat "January 2006" .date }}</figcaption>
+  </figure>
+  {{ end }}
+</section>
+
+{{ partial "project-loom.html" . }}
+
+<section class="home-outreach section" id="outreach">
+  <div class="section-head">
+    <h2>Outreach</h2>
+    <a class="eyebrow eyebrow--link" href="{{ "outreach/" | relURL }}">All talks, events and press &rarr;</a>
+  </div>
+  {{/* Luma's calendar embed can't filter by series (these events carry no tag),
+       so the next AI at Sciencepark session gets Luma's own event card. */}}
+  {{ $next := "" }}{{ range $groups.upcoming }}{{ if and (not $next) (eq .series "AI at Sciencepark") (hasPrefix (.link | default "") "https://luma.com/") }}{{ $next = . }}{{ end }}{{ end }}
+  <div class="home-outreach-grid{{ if $next }} has-luma{{ end }}">
+    <div class="index-list">
+      {{ range first 2 $groups.upcoming }}
+      {{ partial "index-row.html" (dict "item" . "state" "Upcoming") }}
+      {{ end }}
+      {{ range first .Site.Params.outreachOnHome $groups.past }}
+      {{ partial "index-row.html" (dict "item" . "state" "") }}
+      {{ end }}
+    </div>
+    {{ with $next }}
+    <div class="luma-embed">
+      <p class="eyebrow upcoming-sub">Next AI at Sciencepark · register on Luma</p>
+      <iframe src="https://luma.com/embed/event/{{ strings.TrimPrefix "https://luma.com/" .link }}/simple" title="{{ .title }} on Luma" loading="lazy" allowfullscreen></iframe>
+    </div>
+    {{ end }}
   </div>
 </section>
 
 {{ partial "gallery.html" . }}
-
-<section class="home-events band-dark" id="meetups">
-  <div class="section-head">
-    <h2>Upcoming events</h2>
-    <a class="eyebrow eyebrow--link" href="{{ "publications/#events" | relURL }}">All events &rarr;</a>
-  </div>
-  {{ partial "events-list.html" (dict "ctx" . "limit" .Site.Params.eventsOnHome "variant" "dark" "upcomingOnly" true) }}
-  {{ if $news }}
-  <div class="news-strip" id="news">
-    <div class="eyebrow">News</div>
-    <div class="news-strip-items">
-      {{ range first 3 (sort $news "date" "desc") }}
-      <a class="news-strip-item" href="{{ .link }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>
-        <span class="mono">{{ .date.Format "02 Jan 2006" }}</span>
-        <span>{{ .title }}</span>
-      </a>
-      {{ end }}
-    </div>
-  </div>
-  {{ end }}
-</section>
-
 {{ end }}

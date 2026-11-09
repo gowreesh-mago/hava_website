@@ -120,7 +120,8 @@ function convertToScholarFormat(bibEntries) {
         doi: entry.doi || '',
         arxiv: entry.arxiv || entry.eprint || '',
         url: entry.url || '',
-        pdf: entry.pdf || ''
+        pdf: entry.pdf || '',
+        projects: entry.projects ? entry.projects.split(',').map(p => p.trim()).filter(Boolean) : []
       };
     })
     .filter(paper => paper.title) // Remove entries without title

@@ -1,0 +1,11 @@
+{{/* Only explicitly HAVA-co-created entries from the LAB42 calendar are eligible. */}}
+{{ $today := now.Format "2006-01-02" }}
+{{ $upcoming := slice }}{{ $past := slice }}{{ $ongoing := slice }}
+{{ range .Site.Data.outreach }}
+  {{ if or (ne (.series | default "") "AI at Sciencepark") (.havaCoCreated | default false) }}
+    {{ if .date }}
+      {{ if ge .date $today }}{{ $upcoming = $upcoming | append . }}{{ else }}{{ $past = $past | append . }}{{ end }}
+    {{ else }}{{ $ongoing = $ongoing | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ return (dict "upcoming" (sort $upcoming "date" "asc") "past" (sort $past "date" "desc") "ongoing" $ongoing) }}

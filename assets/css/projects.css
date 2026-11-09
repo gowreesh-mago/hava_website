@@ -1,0 +1,29 @@
+/* Loaded only on Projects: seven ruled project records. */
+
+
+.projects-page .prose { padding-top: var(--band); }
+.projects-page .prose > h2 {
+  font-size: var(--t-h2);
+  margin: var(--band) 0 0.75rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+}
+.projects-page .prose > h2#applications { border-top-color: var(--red); }
+.projects-page .prose > h2 + p { max-width: 70ch; margin-bottom: 1.5rem; }
+
+.project-record {
+  display: grid; grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  gap: 1rem 3rem; padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+}
+.project-record:target { background: var(--panel); }
+.project-record-head h3 { font-size: 1.5rem; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.75rem; }
+.project-credit { font-family: var(--font-mono); font-size: var(--t-meta); line-height: 1.6; color: var(--muted); }
+.project-credit strong { color: var(--ink); font-weight: 500; }
+.project-record-body p { margin-bottom: 0; max-width: 78ch; }
+
+@media (max-width: 48rem) {
+  .project-record { grid-template-columns: 1fr; gap: 0.6rem; }
+}
+
+.projects-page .prose > h2:first-child { margin-top: 0; }

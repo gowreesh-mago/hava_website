@@ -1,9 +1,6 @@
 ---
-title: "Publications & News"
-eyebrow: "Research & updates"
-description: "Papers, news and events from HAVA-Lab."
+title: "Publications"
+eyebrow: "Research"
+description: "Research co-authored by the HAVA-Lab team, newest first."
+aliases: ["/blog/", "/blog/looking-beyond-the-obvious/"]
 ---
-
-Browse papers by the HAVA-Lab team. Search by title, author, venue or year.
-
-Lab news and event reports appear below the publication list.

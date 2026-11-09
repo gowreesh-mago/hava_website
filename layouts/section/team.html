@@ -1,57 +1,74 @@
 {{ define "main" }}
 {{ $t := .Site.Data.team }}
+{{ $pis := $t.leadership | append $t.copis }}
+{{ $faculties := slice }}
+{{ range $t.phd | append $pis }}{{ range .affiliations }}{{ if not (in (slice "ivi" "vu") .) }}{{ $faculties = $faculties | append . }}{{ end }}{{ end }}{{ end }}
 {{ partial "page-hero.html" . }}
-<div class="prose">{{ .Content }}</div>
 
-{{ with .Params.stats }}
-<section class="stats stats--inline">
-  {{ range . }}
-  <div class="stat"><div class="stat-n">{{ .n }}</div><div class="eyebrow">{{ .label }}</div></div>
-  {{ end }}
+<section class="stats stats--hero" aria-label="The lab in numbers">
+  <div class="stat"><div class="stat-n">{{ len $t.phd }}</div><div class="eyebrow">PhD researchers</div></div>
+  <div class="stat"><div class="stat-n">{{ len (uniq $faculties) }}</div><div class="eyebrow">Faculties</div></div>
+  <div class="stat"><div class="stat-n">{{ len $pis }}</div><div class="eyebrow">Principal investigators</div></div>
 </section>
-{{ end }}
 
-{{ range $group := slice (dict "title" "Leadership" "people" $t.leadership) (dict "title" "Co-Principal Investigators" "people" $t.copis) }}
-{{ with $group.people }}
-<section class="section">
-  <div class="section-head"><h2>{{ $group.title }}</h2></div>
-  <div class="people">
-    {{ range $i, $m := . }}
-    <div class="person">
-      <span class="pub-n">{{ printf "%02d" (add $i 1) }}</span>
-      <img class="person-photo" src="{{ $m.photo | relURL }}" alt="{{ $m.name }}" loading="lazy" width="96" height="96">
-      <div class="person-body">
-        <h3>{{ $m.name }}</h3>
-        <div class="eyebrow eyebrow--red">{{ $m.role }}</div>
-        {{ with $m.bio }}<p>{{ . }}</p>{{ end }}
-      </div>
-      <div class="person-side">
-        <span class="mono">{{ $m.faculty }}</span>
-        {{ with $m.email }}<a class="mono link-rule" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
-      </div>
-    </div>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-{{ end }}
-
-{{ with $t.phd }}
-<section class="section band-panel" id="phd">
+<section class="section team-section" id="phd">
   <div class="section-head">
-    <h2>Doctoral Candidates</h2>
-    <span class="eyebrow">Supervision in the research field and video AI</span>
+    <h2>PhD researchers</h2>
+    <span class="eyebrow">Select a researcher to see their supervisors</span>
   </div>
-  <div class="cohort">
-    {{ range $i, $m := . }}
-    <div class="cohort-card">
-      <img src="{{ $m.photo | relURL }}" alt="{{ $m.name }}" loading="lazy" width="200" height="200">
-      <span class="eyebrow eyebrow--red">{{ printf "%02d" (add $i 1) }}</span>
-      <h3>{{ $m.name }}</h3>
-      {{ with $m.supervisors }}<p class="mono">{{ . }}</p>{{ end }}
+  <div class="people-grid">
+    {{ range sort $t.phd "sortName" }}
+    {{ $site := .website | default "" }}
+    <div class="person-card" data-supervisors="{{ delimit .supervisors "|" }}">
+      <div class="person-media">
+        <img class="person-photo" src="{{ .photo | relURL }}" alt="" loading="lazy" width="320" height="320">
+        {{ partial "affiliations.html" (dict "ctx" $ "keys" .affiliations) }}
+      </div>
+      <h3>{{ if $site }}<a href="{{ $site }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</h3>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+{{ range $group := slice (dict "title" "Co-principal investigators" "people" $t.copis) (dict "title" "Leadership" "people" $t.leadership) }}
+<section class="section team-section">
+  <div class="section-head"><h2>{{ $group.title }}</h2></div>
+  <div class="people-grid">
+    {{ range sort $group.people "sortName" }}
+    <div class="person-card" data-person="{{ .name }}">
+      <div class="person-media">
+        <img class="person-photo" src="{{ .photo | relURL }}" alt="" loading="lazy" width="320" height="320">
+        {{ if ne $group.title "Leadership" }}{{ partial "affiliations.html" (dict "ctx" $ "keys" .affiliations) }}{{ end }}
+      </div>
+      <h3>{{ .name }}</h3>
     </div>
     {{ end }}
   </div>
 </section>
 {{ end }}
+
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.person-card[data-supervisors]');
+  var people = document.querySelectorAll('[data-person]');
+  var pinned = null;
+  function light(card){
+    var names = card ? card.getAttribute('data-supervisors').split('|') : [];
+    cards.forEach(function(c){ c.classList.toggle('is-active', c === card); });
+    people.forEach(function(p){ p.classList.toggle('is-supervisor', names.indexOf(p.getAttribute('data-person')) !== -1); });
+  }
+  cards.forEach(function(c){
+    c.addEventListener('mouseenter', function(){ if(!pinned) light(c); });
+    c.addEventListener('mouseleave', function(){ if(!pinned) light(null); });
+    c.addEventListener('focusin', function(){ light(c); });
+    c.addEventListener('click', function(e){
+      if (e.target.closest('a')) return;
+      pinned = (pinned === c) ? null : c;
+      light(pinned);
+    });
+  });
+  document.addEventListener('focusout', function(){ setTimeout(function(){ if(!document.activeElement.closest('.person-card[data-supervisors]')) light(pinned); }, 0); });
+})();
+</script>
 {{ end }}

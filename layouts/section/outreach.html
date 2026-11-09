@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{ partial "page-hero.html" . }}
+{{ $groups := partial "outreach-groups.html" . }}
+<section class="section band-panel" id="upcoming">
+  <div class="section-head">
+    <h2>Upcoming</h2>
+    <a class="eyebrow eyebrow--link" href="https://luma.com/lab42.uva.nl" target="_blank" rel="noopener">LAB42 community calendar &nearr;</a>
+  </div>
+  <p class="series-intro">HAVA Hour runs as <strong>AI at Sciencepark</strong>, a monthly session HAVA-Lab co-creates with the UvA Data Science Centre, Zeta Alpha and LAB42. Every session, with its presenters, is on the <a href="https://luma.com/lab42.uva.nl" target="_blank" rel="noopener">LAB42 Luma calendar</a>.</p>
+  {{ with $groups.upcoming }}
+  <div class="media-list">{{ range . }}{{ partial "outreach-item.html" . }}{{ end }}</div>
+  {{ else }}<p class="empty-state">No upcoming sessions announced. Past activity is listed below.</p>{{ end }}
+</section>
+<section class="section" id="previous">
+  <div class="section-head"><h2>Previously</h2><span class="eyebrow">{{ len $groups.past }} talks, events, posters and press items</span></div>
+  {{ with $groups.past }}
+  <div class="media-list">{{ range . }}{{ partial "outreach-item.html" . }}{{ end }}</div>
+  {{ else }}<p class="empty-state">Nothing listed yet.</p>{{ end }}
+</section>
+{{ with $groups.ongoing }}
+<section class="section" id="roles">
+  <div class="section-head"><h2>Roles</h2></div>
+  <div class="media-list">{{ range . }}{{ partial "outreach-item.html" . }}{{ end }}</div>
+</section>
+{{ end }}
+{{ end }}

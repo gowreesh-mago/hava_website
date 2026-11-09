@@ -1,0 +1,39 @@
+# The seven PhD projects. Home shows them as theme cards (alignment above
+# applications); Projects credits each one with {{< project-credit id >}}.
+# `lead` must match a PhD name in data/team.yml; supervisors come from there.
+
+- id: cognitive-alignment
+  group: alignment
+  title: "Cognitive Alignment"
+  short: "Can the way people process moving images make video AI more efficient?"
+  lead: "Anne Zonneveld"
+- id: ethical-alignment
+  group: alignment
+  title: "Ethical Alignment"
+  short: "Where do ethical choices enter data, labels and models?"
+  lead: "Dasha Simons"
+- id: legal-alignment
+  group: alignment
+  title: "Legal Alignment"
+  short: "How can privacy and fundamental rights shape video AI from the start?"
+  lead: "Marten Steketee"
+- id: public-safety
+  group: application
+  title: "Public Safety"
+  short: "Studying incidents missing from crime records without inheriting their bias."
+  lead: "Ruthu Rooparaghunath"
+- id: skill-assessment
+  group: application
+  title: "Skill Assessment"
+  short: "Assessing medical skills reliably beyond the training lab."
+  lead: "Ana Manzano Rodríguez"
+- id: diagnostic-training
+  group: application
+  title: "Diagnostic Training"
+  short: "How dental students learn to read radiographs, and where they go wrong."
+  lead: "Swasti Shreya Mishra"
+- id: responsible-marketing
+  group: application
+  title: "Responsible Marketing"
+  short: "The role of video in organised political and commercial campaigns."
+  lead: "Gowreesh Mago"

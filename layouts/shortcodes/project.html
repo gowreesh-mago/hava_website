@@ -1,0 +1,13 @@
+{{- /* Ruled project record. Usage: {{< project "id" >}}Markdown description{{< /project >}} */ -}}
+{{- $id := .Get 0 -}}
+{{- $p := index (where .Site.Data.projects "id" $id) 0 -}}
+{{- if not $p }}{{ errorf "project: unknown project %q" $id }}{{ end -}}
+{{- $phd := index (where .Site.Data.team.phd "name" $p.lead) 0 -}}
+{{- if not $phd }}{{ errorf "project: lead %q not in data/team.yml phd" $p.lead }}{{ end -}}
+<article class="project-record" id="{{ $p.id }}">
+  <header class="project-record-head">
+    <h3>{{ $p.title }}</h3>
+    <p class="project-credit">Led by <strong>{{ $phd.name }}</strong><br>Supervised by {{ delimit $phd.supervisors ", " " and " }}</p>
+  </header>
+  <div class="project-record-body">{{ .Inner | .Page.RenderString (dict "display" "block") }}</div>
+</article>

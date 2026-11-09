@@ -8,29 +8,26 @@ Everything that changes regularly lives in a plain data file or a Markdown file.
 
 | What | Edit this file | Notes |
 | --- | --- | --- |
-| Meetups, talks, sessions | `data/events.yml` | One entry per event. The home page shows upcoming events; Publications & News also lists past events. |
-| Papers | `bibliography.bib` | Standard BibTeX. Optional `url`, `doi`, `arxiv`, `pdf` fields become link buttons. |
-| People and photos | `data/team.yml` | Drives the Team page. Photos go in `static/images/`. |
-| Media & visibility | `data/media.yml` | Press, talks, videos, events. Optional `image` thumbnail. |
-| Lab photo carousel | `data/gallery.yml` | Photos from `assets/images/lab/`, with captions, alt text and optional credits. Shown on Home in a shuffled order on each visit; Hugo creates responsive WebP images. |
-| Blog posts | `content/blog/` | Copy `content/blog/example-post.md`, remove `draft: true`. Use a folder with `index.md` for a post with its own images. An optional `publication` field matching a BibTeX entry ID adds a Blog post link beside that paper. |
-| News articles | `content/news/*.md` | Same format as blog posts. Listed under Publications & News and on the home page. |
-| Home page headline and introduction | `content/_index.md` | Followed by the photo carousel, upcoming events and the three latest news items or DSC spotlights. |
-| Mission text and objective links | `content/mission/_index.md` | Objectives in the front matter link to the detailed research sections below. |
-| Nav, contact email, upcoming event limit | `config.toml` | `eventsOnHome` controls the maximum number shown on the home page. |
+| People, photos, affiliations | `data/team.yml` | Drives the Team page and the "Supervised by" credits. PhD `supervisors` must match PI names exactly. Original affiliation images are defined at the top. |
+| The seven projects | `data/projects.yml` | Home theme cells (alignment above applications). `lead` must match a PhD in `data/team.yml`. |
+| Project descriptions | `content/projects/_index.md` | Plain Markdown. Credits come from `{{< project-credit "id" >}}`. |
+| Talks, events, posters, press, spotlights | `data/outreach.yml` | One stream on the Outreach page; Home shows the latest few. `vimeo` embeds a video. |
+| Papers | `bibliography.bib` (the only file to edit) | Add, edit or delete an entry here. Grouped by year on Publications. Add `pdf = {...}` so the title links straight to the PDF, and `projects = {skill-assessment, ...}` (ids from `data/projects.yml`) to list it under those projects on Home. |
+| Lab photo carousel (Outreach) | `data/gallery.yml` | Photos from `assets/images/lab/`. |
+| Home headline and introduction | `content/_index.md` | |
+| Menu, location, items on Home | `config.toml` | `outreachOnHome`. |
 
-### Adding an event
+### Adding an outreach item
 
 ```yaml
-- title: "HAVA-Faculty-focus: ethical alignment"
+- title: "Talk title"
   date: "2026-10-08"
-  kind: "Faculty-focus"
-  time: "16:00"
-  location: "DSC, University Library Singel"
-  speaker: "Dasha Simons · with Tobias Blanke"
-  description: "One sentence on what the session covers."
-  link: "https://forms.uva.nl/…"
-  linkLabel: "Register"
+  type: "Talk"
+  outlet: "Host organisation"
+  location: "University Library, Amsterdam"
+  summary: "Presenter and a short description of the talk."
+  link: "https://example.org/event"
+  linkLabel: "Programme"
 ```
 
 ### Adding a paper
@@ -58,3 +55,28 @@ hugo               # production build into public/
 ```
 
 Requires Hugo extended ≥ 0.152 and Node ≥ 14.
+
+## Design and curation rules
+
+`requirements.txt` takes priority for layout and content; `design.md` supplies
+colour, typography and motion. The original weave is an explicit user-approved
+exception: preserve its appearance and animation. Team groups are PhDs, co-PIs,
+then leadership; `sortName` orders each group by surname, following the VIS Lab
+reference. The later user instruction replaces affiliation circles with original logo images, preserving their proportions and colours.
+
+Outreach uses Europe/Amsterdam calendar dates. Today's events remain in
+“Today & upcoming”; earlier dates appear in “Previous”. The daily deployment
+refreshes these sections. Undated service records have no invented appointment
+date. LAB42 entries must have `series: "AI at Sciencepark"` and
+`havaCoCreated: true`, verified against their Luma event description. This is a
+curated list, not an automatic import of the LAB42 calendar. `presenters` is a list;
+`imageCredit` attributes event artwork.
+
+Run the generated-site audit after building:
+
+```sh
+hugo --panicOnWarning --destination /tmp/hava-audit
+python3 scripts/audit-built-site.py /tmp/hava-audit /hava_website
+```
+
+Use `/` instead of `/hava_website` when building with a root-domain base URL.

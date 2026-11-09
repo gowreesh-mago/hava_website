@@ -1,0 +1,143 @@
+{{/*
+  The interactive weave on Home: the lab's loom graphic (partials/loom.html),
+  whose strips carry data-thread ids. Hovering a strip traces it; selecting a
+  strip or an index chip opens that project's record (question, PhD,
+  supervisors, publications) in the right column. Without JS every record shows.
+  Publications per project: the `projects` field of each entry in bibliography.bib.
+*/}}
+{{ $site := .Site }}
+{{ $t := $site.Data.team }}
+{{ $pis := $t.copis | append $t.leadership }}
+{{ $papers := slice }}{{ with index $site.Data "scholar-papers" }}{{ $papers = .papers }}{{ end }}
+{{ $warps := where $site.Data.projects "group" "alignment" }}
+{{ $wefts := where $site.Data.projects "group" "application" }}
+
+<section class="lw" id="projects-map" aria-labelledby="lw-heading" data-loom>
+  <div class="section-head">
+    <h2 id="lw-heading">Seven projects</h2>
+    <span class="eyebrow">Seven projects · three alignment directions · four applications</span>
+  </div>
+
+  <div class="lw-stage">
+    <div class="lw-weave">{{ partial "loom.html" . }}</div>
+
+    <div class="lw-detail" aria-live="polite">
+      <div class="lw-intro" id="lw-intro">
+        <p class="lw-hint mono">Every application draws on all three alignment directions. Hover a strip of the weave to trace it; select a strip or a project below to open it.</p>
+        <div class="lw-index">
+          {{ range $g := slice (dict "label" "Alignment directions" "ps" $warps "from" 1) (dict "label" "Applications" "ps" $wefts "from" 4) }}
+          <div class="lw-index-group">
+            <p class="eyebrow">{{ $g.label }}</p>
+            <ul>
+              {{ range $k, $p := $g.ps }}
+              <li><button class="lw-index-row" type="button" data-select="{{ $p.id }}" aria-pressed="false" aria-controls="lw-panel-{{ $p.id }}">
+                <span class="lw-index-n mono">{{ printf "%02d" (add $k $g.from) }}</span>
+                <span class="lw-index-title">{{ $p.title }}</span>
+                <span class="lw-index-lead mono">{{ $p.lead }}</span>
+              </button></li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ range $n, $p := $warps | append $wefts }}
+      {{ $phd := index (where $t.phd "name" $p.lead) 0 }}
+      {{ $pubs := where $papers "projects" "intersect" (slice $p.id) }}
+      {{ $isWarp := eq $p.group "alignment" }}
+      <section class="lw-panel" id="lw-panel-{{ $p.id }}" aria-labelledby="lw-title-{{ $p.id }}">
+        <p class="eyebrow eyebrow--red">{{ cond $isWarp "Alignment direction" "Application" }} <span class="muted">· Thread {{ printf "%02d" (add $n 1) }} / 07</span></p>
+        <h3 id="lw-title-{{ $p.id }}" tabindex="-1">{{ $p.title }}</h3>
+        <p class="lw-question">{{ $p.short }}</p>
+
+        <div class="lw-people">
+          <figure class="lw-phd">
+            <img src="{{ $phd.photo | relURL }}" alt="" loading="lazy" width="160" height="160">
+            <figcaption>
+              <span class="eyebrow">PhD researcher</span>
+              {{ with $phd.website }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $phd.name }}</a>{{ else }}<span>{{ $phd.name }}</span>{{ end }}
+            </figcaption>
+          </figure>
+          <div class="lw-sups">
+            <span class="eyebrow">Supervised by</span>
+            <ul>
+              {{ range $phd.supervisors }}{{ $s := index (where $pis "name" .) 0 }}
+              <li>{{ with $s }}<img src="{{ .photo | relURL }}" alt="" loading="lazy" width="80" height="80">{{ end }}<span>{{ . }}</span></li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="lw-pubs">
+          <p class="eyebrow">Publications · {{ len $pubs }}</p>
+          {{ if $pubs }}
+          <ul>
+            {{ range $pubs }}{{ with . }}
+            {{ $href := or .pdf .url (cond (ne .doi "") (printf "https://doi.org/%s" .doi) "") (cond (ne .arxiv "") (printf "https://arxiv.org/abs/%s" .arxiv) "") }}
+            <li>
+              {{ if $href }}<a href="{{ $href }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
+              <span class="mono">{{ .venue }}{{ if gt .year 0 }} · {{ .year }}{{ end }}</span>
+            </li>
+            {{ end }}{{ end }}
+          </ul>
+          {{ else }}<p class="empty-state">No publications listed yet.</p>{{ end }}
+        </div>
+
+        <div class="lw-actions">
+          <a class="text-link" href="{{ printf "projects/#%s" $p.id | relURL }}">Full project description &rarr;</a>
+          <button class="lw-close text-link" type="button" data-select="">Back to all projects</button>
+        </div>
+      </section>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root = document.querySelector('[data-loom]');
+  if (!root) return;
+  var pieces = root.querySelectorAll('[data-thread]');
+  var chips = root.querySelectorAll('.lw-index [data-select]');
+  var intro = document.getElementById('lw-intro');
+  var panels = root.querySelectorAll('.lw-panel');
+  var selected = null, last = null;
+  root.classList.add('is-enhanced');
+
+  function paint(id){
+    root.classList.toggle('has-lit', !!id);
+    pieces.forEach(function(p){ p.classList.toggle('is-lit', p.getAttribute('data-thread') === id); });
+  }
+  function select(id, from){
+    selected = id || null;
+    if (from) last = from;
+    panels.forEach(function(p){ p.hidden = p.id !== 'lw-panel-' + selected; });
+    intro.hidden = !!selected;
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c.getAttribute('data-select') === selected)); });
+    paint(selected);
+    if (selected && window.matchMedia('(max-width: 64rem)').matches) {
+      var panel = document.getElementById('lw-panel-' + selected);
+      if (panel.getBoundingClientRect().top > window.innerHeight * 0.6) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  select(null);
+
+  root.addEventListener('pointerover', function(e){ var t = e.target.closest('[data-thread]'); paint(t ? t.getAttribute('data-thread') : selected); });
+  root.querySelector('.lw-weave').addEventListener('pointerleave', function(){ paint(selected); });
+  root.addEventListener('click', function(e){
+    var t = e.target.closest('[data-thread], [data-select]');
+    if (!t) return;
+    var id = t.hasAttribute('data-thread') ? t.getAttribute('data-thread') : t.getAttribute('data-select');
+    var fromIndex = !!t.closest('.lw-index');
+    select(id === selected && t.hasAttribute('data-thread') ? null : id, t.closest('.lw-panel') ? last : t);
+    if (selected && fromIndex) document.getElementById('lw-title-' + selected).focus({ preventScroll: true });
+    if (!selected && last) last.focus();
+  });
+  root.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && selected) { select(null); if (last) last.focus(); }
+  });
+
+})();
+</script>

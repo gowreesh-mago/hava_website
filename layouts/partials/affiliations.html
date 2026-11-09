@@ -1,0 +1,14 @@
+{{/* Affiliation marks as uniform squares: the official square avatar where one
+     exists, otherwise the unit's abbreviation on its colour (no invented logo).
+     Call with (dict "ctx" . "keys" $person.affiliations). */}}
+{{ $map := .ctx.Site.Data.team.affiliations }}
+{{ with .keys }}
+<span class="affils">
+  {{ range . }}{{ with index $map . }}
+  <span class="affil" data-tip="{{ .label }}">
+    {{ with .avatar }}<img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async" width="40" height="40">{{ else }}<span class="affil-abbr" style="--affil: {{ .colour | safeCSS }}{{ with .textColour }}; --affil-text: {{ . | safeCSS }}{{ end }}" aria-hidden="true">{{ .abbr }}</span>{{ end }}
+    <span class="visually-hidden">{{ .label }}</span>
+  </span>
+  {{ end }}{{ end }}
+</span>
+{{ end }}

@@ -1,0 +1,154 @@
+# Everything the lab does in public: events, talks, posters, press,
+# spotlights and achievements. One entry per item; the site sorts them,
+# upcoming first, then newest first. Home shows the latest few.
+#
+# Fields:
+#   title     required
+#   date      YYYY-MM-DD; omit for ongoing service without a verified start date
+#   type      Event | Talk | Poster | Press | Spotlight | Achievement | Series
+#   outlet    optional, where it appeared or who hosted it
+#   location  optional
+#   summary   optional, one or two sentences
+#   link      optional, URL
+#   linkLabel optional, button text (default "Open")
+#   image     optional, path under static/
+#   imageAlt  optional
+#   vimeo     optional, Vimeo id with hash, e.g. "1019799056/9c9ead1f9c"
+
+- title: "DSC Member Spotlight: Dasha Simons"
+  date: "2026-09-01"
+  type: "Spotlight"
+  outlet: "UvA Data Science Centre"
+  summary: "Dasha discusses ethical questions in human-AI alignment and how different disciplines understand human preferences and values."
+  link: "https://dsc.uva.nl/content/news/2026/09/dsc-member-spotlight-dasha-simons.html"
+  linkLabel: "Read"
+  image: "images/spotlights/dasha.jpg"
+  imageAlt: "Dasha Simons, photographed for the DSC Member Spotlight"
+
+- title: "Hyperbolic U-Net at MIDL 2026"
+  date: "2026-07-08"
+  type: "Poster"
+  outlet: "Medical Imaging with Deep Learning"
+  summary: "Swasti Shreya Mishra presented Hyperbolic U-Net for Robust Medical Image Segmentation, with Max van Spengler, Erwin Berkhout and Pascal Mettes."
+  link: "https://openreview.net/forum?id=NxKaeTNMxR"
+  linkLabel: "Paper"
+
+- title: "DSC Member Spotlight: Gowreesh Mago"
+  date: "2026-04-07"
+  type: "Spotlight"
+  outlet: "UvA Data Science Centre"
+  summary: "Gowreesh discusses video understanding, abstract concepts in advertisements and his research on foundation models."
+  link: "https://dsc.uva.nl/content/news/2026/04/dsc-member-spotlight-gowreesh-mago.html"
+  linkLabel: "Read"
+  image: "images/spotlights/gowreesh.jpg"
+  imageAlt: "Gowreesh Mago, photographed for the DSC Member Spotlight"
+
+- title: "DSC Member Spotlight: Swasti Mishra"
+  date: "2025-11-12"
+  type: "Spotlight"
+  outlet: "UvA Data Science Centre"
+  summary: "Swasti discusses AI for dental education and diagnostic training, and her work on medical image segmentation."
+  link: "https://dsc.uva.nl/content/news/2025/11/dsc-member-spotlight-swasti-mishra.html"
+  linkLabel: "Read"
+  image: "images/spotlights/swasti.jpg"
+  imageAlt: "Swasti Mishra, photographed for the DSC Member Spotlight"
+
+- title: "DSC Away Day at Eye Filmmuseum"
+  date: "2025-06-16"
+  type: "Event"
+  outlet: "UvA Data Science Centre"
+  location: "Eye Film Institute, Amsterdam"
+  summary: "Organised by HAVA-Lab's PhD researchers, with a keynote, panel discussion and workshops on human-aligned AI in video."
+  link: "https://dsc.uva.nl/content/news/2025/06/dsc-away-day-recap.html"
+  linkLabel: "Recap"
+
+- title: "Official opening of HAVA-Lab"
+  date: "2024-10-16"
+  type: "Event"
+  outlet: "UvA Data Science Centre"
+  location: "University Library, Amsterdam"
+  summary: "Rector magnificus Peter-Paul Verbeek officially opened HAVA-Lab. The first PhD cohort had started in May 2024; the video introduces the seven PhD researchers."
+  link: "https://dsc.uva.nl/content/news/2024/10/hava-lab-officially-opened-meet-the-phd-candidates-of-this-lab.html"
+  linkLabel: "Report"
+  vimeo: "1019799056/9c9ead1f9c"
+
+# HAVA-co-created events only. Dates and presenters checked against Luma.
+- title: "AI at Sciencepark — December session"
+  date: "2026-12-03"
+  type: "Event"
+  series: "AI at Sciencepark"
+  havaCoCreated: true
+  outlet: "HAVA-Lab · DSC · LAB42"
+  location: "LAB42, Amsterdam Science Park · 16:00–17:00 CET"
+  summary: "The next HAVA-co-created AI at Sciencepark session. The programme will be announced on Luma."
+  link: "https://luma.com/5mpuz2wv"
+  linkLabel: "Event details"
+
+- title: "AI at Sciencepark — The Future of AI in the Creative Industry"
+  date: "2026-11-05"
+  type: "Event"
+  series: "AI at Sciencepark"
+  havaCoCreated: true
+  outlet: "HAVA-Lab · DSC · Zeta Alpha · LAB42"
+  location: "LAB42, room L3.36 · 16:00–17:00 CET"
+  summary: "A conversation about AI in animation, creative ownership and representations of gender, followed by networking."
+  presenters:
+    - "Hisko Hulsing — AI and animation"
+    - "Daan Archer, Copyright Delta — copyright and authorship"
+    - "Piera Riccio, MultiX — visual imaginaries of gender"
+  link: "https://luma.com/m133cxwh"
+  linkLabel: "Programme"
+  image: "media/outreach/ai-sciencepark-november.webp"
+  imageAlt: "AI at Sciencepark event artwork from LAB42 Community"
+  imageCredit: "LAB42 Community"
+
+- title: "AI at Sciencepark — AI & the University"
+  date: "2026-10-08"
+  type: "Event"
+  series: "AI at Sciencepark"
+  havaCoCreated: true
+  outlet: "HAVA-Lab · DSC · Zeta Alpha · LAB42"
+  location: "LAB42, room L3.36 · 16:00–19:00 CEST"
+  summary: "The first AI at Sciencepark gathering explored AI literacy, inclusion and changes in mathematics and higher education."
+  presenters:
+    - "Eric Van Dusen, UC Berkeley — AI and data science education at scale"
+    - "Iffat Rose Gill, The Code to Change — skills gaps and digital inclusion"
+    - "Jeroen Zuiddam, UvA — AI and mathematics"
+  link: "https://luma.com/n9rur22e"
+  linkLabel: "Programme"
+  image: "media/outreach/ai-sciencepark-october.webp"
+  imageAlt: "AI at Sciencepark event artwork for AI and the University"
+  imageCredit: "LAB42 Community"
+
+- title: "Hyperbolic Deep Learning: What, Why and How"
+  date: "2026-10-28"
+  type: "Talk"
+  outlet: "Utrecht University"
+  summary: "Swasti Shreya Mishra presented an introduction to hyperbolic deep learning."
+  link: "https://swastishreya.github.io/files/Hyperbolic%20Deep%20Learning%20What,%20Why%20and%20How.pdf"
+  linkLabel: "Slides"
+
+- title: "AI for Dentistry at the ACTA DSC Hub launch"
+  date: "2026-10-27"
+  type: "Talk"
+  outlet: "ACTA · Data Science Centre"
+  summary: "Swasti Shreya Mishra presented her research on AI for dentistry at the DSC faculty hub launch."
+  link: "https://swastishreya.github.io/files/AI%20for%20Dentistry%20ACTA%20x%20DSC.pdf"
+  linkLabel: "Slides"
+
+# Membership is verified, but an appointment date is not published by the source.
+- title: "Marten Steketee on Amsterdam’s personal data committee"
+  type: "Service"
+  outlet: "Commissie Persoonsgegevens Amsterdam"
+  summary: "Marten serves on Amsterdam’s independent personal data committee, which advises the municipality on personal data processing."
+  link: "https://www.amsterdam.nl/bestuur-organisatie/organisatie/commissie-persoonsgegevens-amsterdam/leden-cpa-0/"
+  linkLabel: "Committee"
+
+# Listed in Cees Snoek's public press archive; publisher may require a subscription.
+- title: "De nieuwe generatie modellen leert AI zich in de echte wereld te bewegen"
+  date: "2026-07-01"
+  type: "Press"
+  outlet: "Het Financieele Dagblad"
+  summary: "Newspaper coverage of AI models that learn about the physical world, featured in Cees Snoek’s press archive."
+  link: "https://fd.nl/tech-en-innovatie/1601603/de-nieuwe-generatie-modellen-leert-ai-zich-in-de-echte-wereld-te-bewegen"
+  linkLabel: "Article"

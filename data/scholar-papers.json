@@ -1,6 +1,71 @@
 {
-  "lastUpdated": "2026-10-02T10:38:39.689Z",
+  "lastUpdated": "2026-11-09T15:04:51.197Z",
   "papers": [
+    {
+      "id": "manzano2026hierarchy",
+      "title": "A Hierarchy-Aware Video-Language Model Evaluation and Hyperbolic Baseline for Surgery",
+      "authors": [
+        "Ana Manzano Rodríguez",
+        "Pascal Mettes",
+        "Marlies P. Schijven",
+        "Cees G. M. Snoek"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://arxiv.org/pdf/2609.27139",
+      "projects": [
+        "skill-assessment"
+      ]
+    },
+    {
+      "id": "frascaria2026bialign",
+      "title": "BiAlign Pyramid: A Design Space of Human–AI Alignment Mechanisms Across Scales",
+      "authors": [
+        "Giulia Frascaria",
+        "Daniel Hiterer",
+        "Tiffany Knearem",
+        "Jenny T. Liang",
+        "Kaifang Mao",
+        "Yike Shi",
+        "Dasha Simons",
+        "Anoop K. Sinha",
+        "Hongwei Zhu",
+        "Salvatore Andolina",
+        "Jessica Y. Bo",
+        "Giulia Di Fede",
+        "Helena Anna Frijns",
+        "Eric Lacosse",
+        "Sachit Mahajan",
+        "Srishti Palani",
+        "Nikolas Papadopoulos",
+        "Weiyan Shi",
+        "Sajel Surati",
+        "Nadav Viduchinsky",
+        "Konstantinos Voudouris",
+        "Katherine Wang",
+        "Eryue Xu",
+        "Bhada Yun",
+        "Shengchen Zhang",
+        "Yang Li",
+        "Tanu Mitra",
+        "Brad A. Myers",
+        "Thiemo Wambsganss",
+        "Philipp Wintersberger",
+        "Hua Shen"
+      ],
+      "year": 2026,
+      "venue": "Preprint",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://hua-shen.org/assets/files/bialign-design-space.pdf",
+      "projects": [
+        "ethical-alignment"
+      ]
+    },
     {
       "id": "simons2026hci",
       "title": "HCI's Emerging Roles in Shaping Alignment Discretion",
@@ -11,12 +76,33 @@
       "venue": "CHI 2026 Workshop on Bidirectional Human-AI Alignment (BiAlign)",
       "doi": "",
       "arxiv": "",
-      "url": "https://bialign-workshop.github.io/2026/papers",
-      "pdf": ""
+      "url": "https://bialign-workshop.github.io/",
+      "pdf": "https://raw.githubusercontent.com/bialign-workshop/bialign-workshop.github.io/c5d36a51ec5e42f55080981987088511367dab63/public/2026chi-pdfs/30.pdf",
+      "projects": [
+        "ethical-alignment"
+      ]
+    },
+    {
+      "id": "uyterlinde2026hyperbolic",
+      "title": "Hyperbolic Concept Bottleneck Models",
+      "authors": [
+        "Daniel Uyterlinde",
+        "Swasti Shreya Mishra",
+        "Pascal Mettes"
+      ],
+      "year": 2026,
+      "venue": "NeurIPS (Spotlight)",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://arxiv.org/pdf/2605.06440",
+      "projects": [
+        "diagnostic-training"
+      ]
     },
     {
       "id": "mishra2026hyperbolic",
-      "title": "Hyperbolic u-net for robust medical image segmentation",
+      "title": "Hyperbolic U-Net for Robust Medical Image Segmentation",
       "authors": [
         "Swasti Shreya Mishra",
         "Max van Spengler",
@@ -27,12 +113,32 @@
       "venue": "Medical Imaging with Deep Learning",
       "doi": "",
       "arxiv": "",
+      "url": "https://openreview.net/forum?id=NxKaeTNMxR",
+      "pdf": "https://openreview.net/pdf?id=NxKaeTNMxR",
+      "projects": [
+        "diagnostic-training"
+      ]
+    },
+    {
+      "id": "bouche2026journalism",
+      "title": "Journalism as Data: GDPR Implications of Licensing Journalistic Content to Large Language Models",
+      "authors": [
+        "Gionata Bouché",
+        "Marten Steketee"
+      ],
+      "year": 2026,
+      "venue": "Technology and Regulation",
+      "doi": "10.71265/7yhpdx81",
+      "arxiv": "",
       "url": "",
-      "pdf": ""
+      "pdf": "https://techreg.org/article/download/25844/28704/80796",
+      "projects": [
+        "legal-alignment"
+      ]
     },
     {
       "id": "mago2026looking",
-      "title": "Looking Beyond the Obvious: A Survey on Abstract Concept Recognition for Video Understanding: G. Mago et al.",
+      "title": "Looking Beyond the Obvious: A Survey on Abstract Concept Recognition for Video Understanding",
       "authors": [
         "Gowreesh Mago",
         "Pascal Mettes",
@@ -40,48 +146,51 @@
       ],
       "year": 2026,
       "venue": "International Journal of Computer Vision",
-      "doi": "",
-      "arxiv": "",
+      "doi": "10.1007/s11263-026-02784-5",
+      "arxiv": "2508.20765",
       "url": "",
-      "pdf": ""
+      "pdf": "https://arxiv.org/pdf/2508.20765",
+      "projects": [
+        "responsible-marketing"
+      ]
     },
     {
-      "id": "manzano2025bridging",
-      "title": "Bridging the gap: exposing the hidden challenges towards adoption of artificial intelligence in surgery",
+      "id": "lindeman2026lovit",
+      "title": "LoViT: Intrinsic Lorentz Vision Transformer",
       "authors": [
-        "Ana Manzano Rodriguez",
-        "Cees GM Snoek",
-        "Marlies P Schijven"
-      ],
-      "year": 2025,
-      "venue": "British Journal of Surgery",
-      "doi": "",
-      "arxiv": "",
-      "url": "",
-      "pdf": ""
-    },
-    {
-      "id": "kasarla2025hiervision",
-      "title": "HierVision: Standardized and Reproducible Hierarchical Sources for Vision Datasets",
-      "authors": [
-        "Tejaswi Kasarla",
-        "Ruthu Hulikal Rooparaghunath",
-        "Stefano D'arrigo",
+        "Mees Lindeman",
         "Gowreesh Mago",
-        "Abhishek Jha",
-        "Melika Ayoughi",
-        "Swasti Shreya Mishra",
-        "Ana Manzano Rodriguez",
-        "Teng Long",
-        "Mina Ghadimi Atigh",
-        "others"
+        "Pritam Mishra",
+        "Pascal Mettes"
       ],
-      "year": 2025,
-      "venue": "Proceedings of the IEEE/CVF International Conference on Computer Vision",
+      "year": 2026,
+      "venue": "ECCV Workshops — Beyond Euclidean",
       "doi": "",
       "arxiv": "",
       "url": "",
-      "pdf": ""
+      "pdf": "https://openreview.net/pdf?id=oyBOEcoSjD",
+      "projects": [
+        "responsible-marketing"
+      ]
+    },
+    {
+      "id": "wilde2026robustness",
+      "title": "No Free Robustness: On Bolting Hyperbolic Heads onto Frozen Vision Foundation Models",
+      "authors": [
+        "Max Wilde",
+        "Mattia Sferrazza",
+        "Selman Gul",
+        "Swasti Shreya Mishra"
+      ],
+      "year": 2026,
+      "venue": "ECCV Workshops — Beyond Euclidean",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://openreview.net/pdf?id=CxphbnbTtv",
+      "projects": [
+        "diagnostic-training"
+      ]
     },
     {
       "id": "sartzetaki2025human",
@@ -95,12 +204,162 @@
         "Pascal Mettes",
         "Iris IA Groen"
       ],
-      "year": 2025,
-      "venue": "bioRxiv",
+      "year": 2026,
+      "venue": "International Conference on Learning Representations (ICLR)",
       "doi": "",
       "arxiv": "",
       "url": "",
-      "pdf": ""
+      "pdf": "https://openreview.net/pdf?id=bSsNSfyj8m",
+      "projects": [
+        "cognitive-alignment"
+      ]
+    },
+    {
+      "id": "chaudhuri2026frozen",
+      "title": "What a Frozen Foundation Model Already Knows about the Critical View of Safety: Toward a Real-Time Monitor",
+      "authors": [
+        "Soham Chaudhuri",
+        "Gerrit Jansen",
+        "Remco Hogerwerf",
+        "Joseph Krol",
+        "Ana Manzano Rodríguez"
+      ],
+      "year": 2026,
+      "venue": "MICCAI SafeSurg Workshop",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://papers.miccai.org/miccai-2026-sat/paper/SafeSurg_020.pdf",
+      "projects": [
+        "skill-assessment"
+      ]
+    },
+    {
+      "id": "manzano2025bridging",
+      "title": "Bridging the gap: exposing the hidden challenges towards adoption of artificial intelligence in surgery",
+      "authors": [
+        "Ana Manzano Rodriguez",
+        "Cees GM Snoek",
+        "Marlies P Schijven"
+      ],
+      "year": 2025,
+      "venue": "British Journal of Surgery",
+      "doi": "10.1093/bjs/znaf217",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://www.marliesschijven.nl/files/scientific_articles/Bridging%20the%20gap%20exposing%20the%20hidden%20challenges%20towards%20adoption%20of%20artificial%20intelligence%20in%20surgery.pdf",
+      "projects": [
+        "skill-assessment"
+      ]
+    },
+    {
+      "id": "goyal2025design",
+      "title": "Design-o-Meter: Towards Evaluating and Refining Graphic Designs",
+      "authors": [
+        "Sahil Goyal",
+        "Abhinav Mahajan",
+        "Swasti Shreya Mishra",
+        "Prateksha Udhayanan",
+        "Tripti Shukla",
+        "K J Joseph",
+        "Balaji Vasan Srinivasan"
+      ],
+      "year": 2025,
+      "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://openaccess.thecvf.com/content/WACV2025/papers/Goyal_Design-o-Meter_Towards_Evaluating_and_Refining_Graphic_Designs_WACV_2025_paper.pdf",
+      "projects": [
+        "diagnostic-training"
+      ]
+    },
+    {
+      "id": "dong2025fairness",
+      "title": "Fairness Without Labels: Pseudo-Balancing for Bias Mitigation in Face Gender Classification",
+      "authors": [
+        "Haohua Dong",
+        "Ana Manzano Rodríguez",
+        "Camille Guinaudeau",
+        "Shin'ichi Satoh"
+      ],
+      "year": 2025,
+      "venue": "ICCV Workshops — Fairness and Ethics Towards Transparent AI",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://openaccess.thecvf.com/content/ICCV2025W/FAILED/papers/Dong_Fairness_Without_Labels_Pseudo-Balancing_for_Bias_Mitigation_in_Face_Gender_ICCVW_2025_paper.pdf",
+      "projects": [
+        "skill-assessment"
+      ]
+    },
+    {
+      "id": "kasarla2025hiervision",
+      "title": "HierVision: Standardized and Reproducible Hierarchical Sources for Vision Datasets",
+      "authors": [
+        "Tejaswi Kasarla",
+        "Ruthu Hulikal Rooparaghunath",
+        "Stefano D'Arrigo",
+        "Gowreesh Mago",
+        "Abhishek Jha",
+        "Melika Ayoughi",
+        "Swasti Shreya Mishra",
+        "Ana Manzano Rodríguez",
+        "Teng Long",
+        "Mina Ghadimi Atigh",
+        "Max van Spengler",
+        "Pascal Mettes"
+      ],
+      "year": 2025,
+      "venue": "ICCV Workshops — Beyond Euclidean",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://openaccess.thecvf.com/content/ICCV2025W/BEW/papers/Kasarla_HierVision_Standardized_and_Reproducible_Hierarchical_Sources_for_Vision_Datasets_ICCVW_2025_paper.pdf",
+      "projects": [
+        "diagnostic-training",
+        "public-safety",
+        "responsible-marketing",
+        "skill-assessment"
+      ]
+    },
+    {
+      "id": "binsbergen2025lawful",
+      "title": "Lawful and Accountable Personal Data Processing with GDPR-based Access and Usage Control in Distributed Systems",
+      "authors": [
+        "L. Thomas van Binsbergen",
+        "Marten C. Steketee",
+        "Milen G. Kebede",
+        "Heleen L. Janssen",
+        "Tom M. van Engers"
+      ],
+      "year": 2025,
+      "venue": "arXiv preprint",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://arxiv.org/pdf/2503.07172",
+      "projects": [
+        "legal-alignment"
+      ]
+    },
+    {
+      "id": "steke2025cases",
+      "title": "Managing Administrative Law Cases using an Adaptable Model-driven Norm-enforcing Tool",
+      "authors": [
+        "Marten C. Steketee",
+        "Nina M. Verheijen",
+        "L. Thomas van Binsbergen"
+      ],
+      "year": 2025,
+      "venue": "arXiv preprint · Artificial Intelligence for Access to Justice workshop",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://arxiv.org/pdf/2510.24822",
+      "projects": [
+        "legal-alignment"
+      ]
     },
     {
       "id": "zonneveldstraightening",
@@ -110,12 +369,52 @@
         "Pascal Mettes",
         "Iris IA Groen"
       ],
-      "year": 0,
-      "venue": "",
+      "year": 2025,
+      "venue": "Conference on Cognitive Computational Neuroscience (CCN), abstract",
       "doi": "",
       "arxiv": "",
       "url": "",
-      "pdf": ""
+      "pdf": "https://2025.ccneuro.org/abstract_pdf/Zonneveld_2025_Straightening_Natural_Visual_Sequences_Video_DNNs.pdf",
+      "projects": [
+        "cognitive-alignment"
+      ]
+    },
+    {
+      "id": "manzano2025gender",
+      "title": "Uncovering Gender Biases in Gender Identification Models for Japanese Data Analysis",
+      "authors": [
+        "Ana Manzano Rodríguez",
+        "Camille Guinaudeau",
+        "Shin'ichi Satoh"
+      ],
+      "year": 2025,
+      "venue": "CVPR Workshop on Demographic Diversity in Computer Vision",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://openreview.net/pdf?id=8dh3uEBWLa",
+      "projects": [
+        "skill-assessment"
+      ]
+    },
+    {
+      "id": "mishra2024float",
+      "title": "FloAt: Flow Warping of Self-Attention for Clothing Animation Generation",
+      "authors": [
+        "Swasti Shreya Mishra",
+        "Kuldeep Kulkarni",
+        "Duygu Ceylan",
+        "Balaji Vasan Srinivasan"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "https://arxiv.org/pdf/2411.15028",
+      "projects": [
+        "diagnostic-training"
+      ]
     }
   ]
 }
