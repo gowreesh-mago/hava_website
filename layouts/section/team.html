@@ -38,7 +38,7 @@
     <div class="person-card" data-person="{{ .name }}">
       <div class="person-media">
         <img class="person-photo" src="{{ .photo | relURL }}" alt="" loading="lazy" width="320" height="320">
-        {{ if ne $group.title "Leadership" }}{{ partial "affiliations.html" (dict "ctx" $ "keys" .affiliations) }}{{ end }}
+        {{ partial "affiliations.html" (dict "ctx" $ "keys" .affiliations) }}
       </div>
       <h3>{{ .name }}</h3>
     </div>
