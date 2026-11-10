@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-09T15:04:51.197Z",
+  "lastUpdated": "2026-11-10T09:06:46.553Z",
   "papers": [
     {
       "id": "manzano2026hierarchy",
@@ -19,6 +19,42 @@
       "projects": [
         "skill-assessment"
       ]
+    },
+    {
+      "id": "gifford2026large",
+      "title": "A large dataset of human EEG responses to short naturalistic videos for studying dynamic visual event processing",
+      "authors": [
+        "Alessandro T Gifford",
+        "Pablo Oyarzo",
+        "Anne W Zonneveld",
+        "Christina Sartzetaki",
+        "Iris IA Groen",
+        "Radoslaw M Cichy"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint arXiv:2608.28768",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "",
+      "projects": []
+    },
+    {
+      "id": "zonneveldbeyond",
+      "title": "Beyond snapshot vision: decoding dynamic videos from temporally evolving neural activity",
+      "authors": [
+        "Anne W Zonneveld",
+        "Louise van der Eijk",
+        "Pascal Mettes",
+        "Iris Groen"
+      ],
+      "year": 2026,
+      "venue": "9th Annual Conference on Cognitive Computational Neuroscience",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "",
+      "projects": []
     },
     {
       "id": "frascaria2026bialign",
@@ -415,6 +451,22 @@
       "projects": [
         "diagnostic-training"
       ]
+    },
+    {
+      "id": "zonneveld2023video",
+      "title": "Video-and-Language (VidL) models and their cognitive relevance",
+      "authors": [
+        "Anne Zonneveld",
+        "Albert Gatt",
+        "Iacer Calixto"
+      ],
+      "year": 2023,
+      "venue": "2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)",
+      "doi": "",
+      "arxiv": "",
+      "url": "",
+      "pdf": "",
+      "projects": []
     }
   ]
 }
