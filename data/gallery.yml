@@ -2,13 +2,13 @@
 # Keep captions factual; add a credit and source link when available.
 
 - image: "images/lab/brain-video-poster.jpeg"
-  caption: "The human brain and video understanding"
-  context: "Poster presentation"
+  caption: "The Human Brain as a Dynamic Mixture of Expert Models in Video Understanding"
+  context: "International Conference on Representation Learning (ICLR) 2026, Rio de Janeiro, Brazil"
   alt: "Two researchers beside a poster titled The Human Brain as a Dynamic Mixture of Expert Models in Video Understanding."
 
 - image: "images/lab/visual-sequences-poster.jpeg"
   caption: "How video models represent visual sequences"
-  context: "Poster presentation"
+  context: "Vision Science Society (VSS) 2026, Florida, USA "
   alt: "A researcher beside a poster on the role of locality and temporal coherence in visual sequences."
 
 - image: "images/lab/hyperbolic-unet-poster.jpeg"
